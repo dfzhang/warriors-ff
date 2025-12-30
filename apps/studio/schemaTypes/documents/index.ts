@@ -1,13 +1,29 @@
-import { author } from "./author";
-import { blog } from "./blog";
-import { blogIndex } from "./blog-index";
-import { faq } from "./faq";
+import { draftPick } from "./draft-pick";
 import { footer } from "./footer";
 import { homePage } from "./home-page";
+import { league } from "./league";
+import { matchup } from "./matchup";
 import { navbar } from "./navbar";
+import { owner } from "./owner";
 import { page } from "./page";
+import { player } from "./player";
+import { season } from "./season";
 import { settings } from "./settings";
+import { team } from "./team";
+import { teamSeason } from "./team-season";
 
-export const singletons = [homePage, blogIndex, settings, footer, navbar];
+export const singletons = [homePage, settings, footer, navbar];
 
-export const documents = [blog, page, faq, author, ...singletons];
+export const documents = [
+  page,
+  // Fantasy Football League documents
+  league,
+  season,
+  team,
+  owner,
+  player,
+  matchup,
+  draftPick,
+  teamSeason,
+  ...singletons,
+];

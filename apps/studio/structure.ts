@@ -1,16 +1,20 @@
 import { orderableDocumentListDeskItem } from "@sanity/orderable-document-list";
 import {
-  BookMarked,
+  BarChart3,
+  Calendar,
+  ClipboardList,
   CogIcon,
   File,
-  FileText,
   HomeIcon,
   type LucideIcon,
-  MessageCircleQuestion,
   PanelBottomIcon,
   PanelTopDashedIcon,
   Settings2,
+  Swords,
+  Trophy,
   User,
+  UserCircle,
+  Users,
 } from "lucide-react";
 import type {
   StructureBuilder,
@@ -109,19 +113,34 @@ export const structure = (
       createSingleTon({ S, type: "homePage", icon: HomeIcon }),
       S.divider(),
       createList({ S, type: "page", title: "Pages" }),
-      createIndexListWithOrderableItems({
-        S,
-        index: { type: "blogIndex", icon: BookMarked },
-        list: { type: "blog", title: "Blogs", icon: FileText },
-        context,
-      }),
-      createList({
-        S,
-        type: "faq",
-        title: "FAQs",
-        icon: MessageCircleQuestion,
-      }),
-      createList({ S, type: "author", title: "Authors", icon: User }),
+      S.divider(),
+      S.listItem()
+        .title("Fantasy Football")
+        .icon(Trophy)
+        .child(
+          S.list()
+            .title("Fantasy Football")
+            .items([
+              createList({ S, type: "league", title: "Leagues", icon: Trophy }),
+              createList({ S, type: "season", title: "Seasons", icon: Calendar }),
+              createList({ S, type: "team", title: "Teams", icon: Users }),
+              createList({ S, type: "owner", title: "Owners", icon: User }),
+              createList({ S, type: "player", title: "Players", icon: UserCircle }),
+              createList({ S, type: "matchup", title: "Matchups", icon: Swords }),
+              createList({
+                S,
+                type: "teamSeason",
+                title: "Team Seasons",
+                icon: BarChart3,
+              }),
+              createList({
+                S,
+                type: "draftPick",
+                title: "Draft Picks",
+                icon: ClipboardList,
+              }),
+            ]),
+        ),
       S.divider(),
       S.listItem()
         .title("Site Configuration")

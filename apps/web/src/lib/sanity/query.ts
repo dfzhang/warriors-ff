@@ -238,6 +238,98 @@ export const queryBlogPaths = defineQuery(`
   *[_type == "blog" && defined(slug.current)].slug.current
 `);
 
+// Team queries - fetch matchups separately to avoid nested query issues
+export const queryTeamBySlug = defineQuery(`
+  *[_type == "team" && (lower(teamAbbrev) == lower($abbrev) || string(teamId) == $abbrev)][0]{
+    _id,
+    _type,
+    teamId,
+    teamName,
+    teamAbbrev,
+    divisionName,
+    owners[]->{
+      _id,
+      displayName,
+      ownerId
+    },
+    "seasons": *[_type == "teamSeason" && team._ref == ^._id] | order(season->year desc){
+      _id,
+      wins,
+      losses,
+      ties,
+      pointsFor,
+      pointsAgainst,
+      standing,
+      finalStanding,
+      champion,
+      teamNameThisYear,
+      "year": season->year,
+      "seasonId": season._ref,
+      "teamRef": team._ref
+    }
+  }
+`);
+
+// Separate query to fetch matchups for a team season (excluding playoffs)
+export const queryTeamSeasonMatchups = defineQuery(`
+  *[_type == "matchup" && season._ref == $seasonId && (homeTeam._ref == $teamRef || awayTeam._ref == $teamRef) && (isPlayoff != true || !defined(isPlayoff))] | order(week asc){
+    _id,
+    week,
+    homeTeam->{
+      _id,
+      teamName,
+      teamAbbrev,
+      "teamSeason": *[_type == "teamSeason" && team._ref == ^._id && season._ref == $seasonId][0]{
+        teamNameThisYear
+      }
+    },
+    awayTeam->{
+      _id,
+      teamName,
+      teamAbbrev,
+      "teamSeason": *[_type == "teamSeason" && team._ref == ^._id && season._ref == $seasonId][0]{
+        teamNameThisYear
+      }
+    },
+    homeScore,
+    awayScore,
+    winner
+  }
+`);
+
+// Query to fetch all matchups for a team across all seasons (for total record and head-to-head, excluding playoffs)
+export const queryAllTeamMatchups = defineQuery(`
+  *[_type == "matchup" && (homeTeam._ref == $teamRef || awayTeam._ref == $teamRef) && (isPlayoff != true || !defined(isPlayoff))] | order(season->year desc, week asc){
+    _id,
+    week,
+    season->{
+      _id,
+      year
+    },
+    homeTeam->{
+      _id,
+      teamId,
+      teamName,
+      teamAbbrev
+    },
+    awayTeam->{
+      _id,
+      teamId,
+      teamName,
+      teamAbbrev
+    },
+    homeScore,
+    awayScore,
+    winner
+  }
+`);
+
+export const queryTeamPaths = defineQuery(`
+  *[_type == "team" && defined(teamAbbrev) && teamAbbrev != null]{
+    "abbrev": teamAbbrev
+  }
+`);
+
 const ogFieldsFragment = /* groq */ `
   _id,
   _type,
