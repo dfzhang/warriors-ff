@@ -252,21 +252,22 @@ export const queryTeamBySlug = defineQuery(`
       displayName,
       ownerId
     },
-    "seasons": *[_type == "teamSeason" && team._ref == ^._id] | order(season->year desc){
-      _id,
-      wins,
-      losses,
-      ties,
-      pointsFor,
-      pointsAgainst,
-      standing,
-      finalStanding,
-      champion,
-      teamNameThisYear,
-      "year": season->year,
-      "seasonId": season._ref,
-      "teamRef": team._ref
-    }
+        "seasons": *[_type == "teamSeason" && team._ref == ^._id] | order(season->year desc){
+          _id,
+          wins,
+          losses,
+          ties,
+          pointsFor,
+          pointsAgainst,
+          standing,
+          finalStanding,
+          champion,
+          lastPlace,
+          teamNameThisYear,
+          "year": season->year,
+          "seasonId": season._ref,
+          "teamRef": team._ref
+        }
   }
 `);
 

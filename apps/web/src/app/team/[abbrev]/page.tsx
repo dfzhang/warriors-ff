@@ -397,7 +397,12 @@ export default async function TeamPage({
                       🏆 CHAMPION 🏆
                     </div>
                   )}
-                  <AccordionTrigger className={`hover:no-underline ${season.champion ? "pt-12" : "py-6"}`}>
+                  {season.lastPlace && !season.champion && (
+                    <div className="absolute top-0 left-0 right-0 bg-gradient-to-r from-amber-900 via-amber-800 to-amber-900 text-amber-100 dark:text-amber-200 text-center py-2 px-4 font-bold text-sm shadow-md z-10">
+                      💩 LAST PLACE 💩
+                    </div>
+                  )}
+                  <AccordionTrigger className={`hover:no-underline ${(season.champion || season.lastPlace) ? "pt-12" : "py-6"}`}>
                     <div className="flex items-center justify-between w-full pr-4">
                       <h3 className="text-xl font-semibold">
                         {season.year} Season{season.teamNameThisYear ? ` (${season.teamNameThisYear})` : ""}

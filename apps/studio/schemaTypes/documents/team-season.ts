@@ -60,6 +60,13 @@ export const teamSeason = defineType({
       initialValue: false,
     }),
     defineField({
+      name: "lastPlace",
+      title: "Last Place",
+      type: "boolean",
+      description: "Whether this team finished in last place (lost the loser's bracket)",
+      initialValue: false,
+    }),
+    defineField({
       name: "pointsFor",
       title: "Points For",
       type: "number",
