@@ -9,7 +9,7 @@ import {
 
 import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
-import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryAllTeamMatchups } from "@/lib/sanity/query";
+import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryTeamSeasonPlayoffMatchups, queryAllTeamMatchups } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
 
 async function fetchTeamData(abbrev: string, stega = true) {
@@ -79,7 +79,7 @@ export default async function TeamPage({
     return notFound();
   }
 
-  const { teamName, teamAbbrev, owners, seasons, _id: teamId } = teamData;
+  const { teamName, teamAbbrev, seasons, _id: teamId } = teamData;
 
   // Calculate total record from teamSeason records (more accurate than recalculating from matchups)
   let totalWins = 0;
@@ -98,24 +98,6 @@ export default async function TeamPage({
   const allMatchups = await client.fetch(queryAllTeamMatchups, {
     teamRef: teamId,
   });
-
-  // Debug: Log matchups for specific opponents if team is "Mr worldwide"
-  if (teamName?.toLowerCase().includes("mr worldwide")) {
-    const debugOpponents = ["hootie", "williams"];
-    const debugMatchups = allMatchups.filter((m: any) => {
-      const opp = m.homeTeam?._id === teamId ? m.awayTeam : m.homeTeam;
-      const oppName = opp?.teamName?.toLowerCase() || "";
-      return debugOpponents.some(name => oppName.includes(name));
-    });
-    console.log("Debug matchups for Mr worldwide:", debugMatchups.map((m: any) => ({
-      opponent: (m.homeTeam?._id === teamId ? m.awayTeam : m.homeTeam)?.teamName,
-      isHome: m.homeTeam?._id === teamId,
-      teamScore: m.homeTeam?._id === teamId ? m.homeScore : m.awayScore,
-      oppScore: m.homeTeam?._id === teamId ? m.awayScore : m.homeScore,
-      winner: m.winner,
-      season: m.season?.year
-    })));
-  }
 
   // Calculate head-to-head records from matchups
   const headToHeadRecords = new Map<string, { wins: number; losses: number; ties: number; opponent: any }>();
@@ -206,10 +188,36 @@ export default async function TeamPage({
             m.week === matchup.week
           );
         });
+
+      // Check if team finished in top 4 (use finalStanding if available, otherwise standing)
+      const teamStanding = season.finalStanding ?? season.standing;
+      const isTop4 = teamStanding != null && teamStanding <= 4;
+      
+      // Fetch playoff matchups if team finished in top 4
+      let playoffMatchups: any[] = [];
+      if (isTop4) {
+        const playoffs = await client.fetch(queryTeamSeasonPlayoffMatchups, {
+          seasonId: season.seasonId,
+          teamRef: season.teamRef,
+        });
+        
+        // Deduplicate playoff matchups
+        playoffMatchups = (playoffs || [])
+          .filter((matchup: any) => matchup && matchup.homeTeam && matchup.awayTeam)
+          .filter((matchup: any, index: number, self: any[]) => {
+            return index === self.findIndex((m: any) => 
+              m.homeTeam?._id === matchup.homeTeam?._id &&
+              m.awayTeam?._id === matchup.awayTeam?._id &&
+              m.homeScore === matchup.homeScore &&
+              m.awayScore === matchup.awayScore
+            );
+          });
+      }
       
       return {
         ...season,
         matchups: uniqueMatchups,
+        playoffMatchups: playoffMatchups,
       };
     })
   );
@@ -374,11 +382,99 @@ export default async function TeamPage({
                     </div>
                   </AccordionTrigger>
                   <AccordionContent className="pb-6">
+                    {/* Regular Season Matchups */}
                     {season.matchups && Array.isArray(season.matchups) && season.matchups.length > 0 ? (
-                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                        {season.matchups
-                          .filter((matchup: any) => matchup && matchup.homeTeam && matchup.awayTeam && matchup.week != null)
-                          .map((matchup: any) => {
+                      <>
+                        <h4 className="text-lg font-semibold mb-4">Regular Season</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-6">
+                          {season.matchups
+                            .filter((matchup: any) => matchup && matchup.homeTeam && matchup.awayTeam && matchup.week != null)
+                            .map((matchup: any) => {
+                              const isHome = matchup.homeTeam?._id === teamId;
+                              const opponent = isHome ? matchup.awayTeam : matchup.homeTeam;
+                              const teamScore = isHome ? matchup.homeScore : matchup.awayScore;
+                              const opponentScore = isHome ? matchup.awayScore : matchup.homeScore;
+                              
+                              // Determine result
+                              let result: "W" | "L" | "T" | null = null;
+                              if (teamScore !== null && opponentScore !== null) {
+                                if (teamScore > opponentScore) {
+                                  result = "W";
+                                } else if (teamScore < opponentScore) {
+                                  result = "L";
+                                } else {
+                                  result = "T";
+                                }
+                              } else if (matchup.winner === "tie") {
+                                result = "T";
+                              } else if (
+                                (isHome && matchup.winner === "home") ||
+                                (!isHome && matchup.winner === "away")
+                              ) {
+                                result = "W";
+                              } else if (
+                                (isHome && matchup.winner === "away") ||
+                                (!isHome && matchup.winner === "home")
+                              ) {
+                                result = "L";
+                              } else {
+                                result = null;
+                              }
+                              
+                              const resultColor =
+                                result === "W"
+                                  ? "bg-green-100 text-green-800 border-green-300 dark:bg-green-950/20 dark:text-green-400 dark:border-green-700"
+                                  : result === "L"
+                                    ? "bg-red-100 text-red-800 border-red-300 dark:bg-red-950/20 dark:text-red-400 dark:border-red-700"
+                                    : "bg-gray-100 text-gray-800 border-gray-300 dark:bg-gray-950/20 dark:text-gray-400 dark:border-gray-700";
+                              
+                              return (
+                                <div
+                                  key={matchup._id}
+                                  className={`border rounded-lg p-4 ${resultColor} transition-shadow hover:shadow-md`}
+                                >
+                                  <div className="flex items-center justify-between mb-2">
+                                    <span className="text-sm font-medium">
+                                      Week {matchup.week}
+                                    </span>
+                                    <span className={`text-lg font-bold ${resultColor.split(" ")[1]}`}>
+                                      {result || "—"}
+                                    </span>
+                                  </div>
+                                  <div className="space-y-1">
+                                    <div className="flex justify-between text-sm">
+                                      <span className="font-medium">
+                                        {season.teamNameThisYear || teamName}
+                                      </span>
+                                      <span className="font-semibold">{teamScore?.toFixed(1) || "—"}</span>
+                                    </div>
+                                    <div className="flex justify-between text-sm text-muted-foreground">
+                                      <span>
+                                        vs {opponent?.teamSeason?.teamNameThisYear || opponent?.teamName || opponent?.teamAbbrev || "Unknown"}
+                                        {opponent?.teamSeason?.teamNameThisYear && opponent?.teamName && opponent?.teamSeason?.teamNameThisYear !== opponent?.teamName && (
+                                          <span className="text-xs ml-1 opacity-75">({opponent?.teamName})</span>
+                                        )}
+                                      </span>
+                                      <span>{opponentScore?.toFixed(1) || "—"}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })}
+                        </div>
+                      </>
+                    ) : (
+                      <div className="text-muted-foreground text-sm mb-6">
+                        <p>No regular season matchup data available.</p>
+                      </div>
+                    )}
+
+                    {/* Playoff Matchups (only for top 4 teams) */}
+                    {season.playoffMatchups && Array.isArray(season.playoffMatchups) && season.playoffMatchups.length > 0 && (
+                      <>
+                        <h4 className="text-lg font-semibold mb-4">Playoffs</h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                          {season.playoffMatchups.map((matchup: any, index: number) => {
                             const isHome = matchup.homeTeam?._id === teamId;
                             const opponent = isHome ? matchup.awayTeam : matchup.homeTeam;
                             const teamScore = isHome ? matchup.homeScore : matchup.awayScore;
@@ -386,39 +482,68 @@ export default async function TeamPage({
                             
                             // Determine result
                             let result: "W" | "L" | "T" | null = null;
-                            if (matchup.winner === "tie" || (teamScore === opponentScore && teamScore !== null && opponentScore !== null)) {
+                            if (teamScore !== null && opponentScore !== null) {
+                              if (teamScore > opponentScore) {
+                                result = "W";
+                              } else if (teamScore < opponentScore) {
+                                result = "L";
+                              } else {
+                                result = "T";
+                              }
+                            } else if (matchup.winner === "tie") {
                               result = "T";
                             } else if (
                               (isHome && matchup.winner === "home") ||
                               (!isHome && matchup.winner === "away")
                             ) {
                               result = "W";
-                            } else if (teamScore !== null && opponentScore !== null) {
-                              // If winner field is not set, determine from scores
-                              if (teamScore > opponentScore) {
-                                result = "W";
-                              } else if (teamScore < opponentScore) {
-                                result = "L";
-                              }
+                            } else if (
+                              (isHome && matchup.winner === "away") ||
+                              (!isHome && matchup.winner === "home")
+                            ) {
+                              result = "L";
                             } else {
                               result = null;
                             }
                             
                             const resultColor =
                               result === "W"
-                                ? "bg-green-100 text-green-800 border-green-300"
+                                ? "bg-green-100 text-green-800 border-green-300 dark:bg-green-950/20 dark:text-green-400 dark:border-green-700"
                                 : result === "L"
-                                  ? "bg-red-100 text-red-800 border-red-300"
-                                  : "bg-gray-100 text-gray-800 border-gray-300";
+                                  ? "bg-red-100 text-red-800 border-red-300 dark:bg-red-950/20 dark:text-red-400 dark:border-red-700"
+                                  : "bg-gray-100 text-gray-800 border-gray-300 dark:bg-gray-950/20 dark:text-gray-400 dark:border-gray-700";
+                            
+                            // Determine playoff label based on index and first matchup result
+                            let playoffLabel: string;
+                            if (index === 0) {
+                              playoffLabel = "Semi-final";
+                            } else if (index === 1) {
+                              // Check if team won the first playoff matchup
+                              const firstMatchup = season.playoffMatchups[0];
+                              const firstIsHome = firstMatchup.homeTeam?._id === teamId;
+                              const firstTeamScore = firstIsHome ? firstMatchup.homeScore : firstMatchup.awayScore;
+                              const firstOpponentScore = firstIsHome ? firstMatchup.awayScore : firstMatchup.homeScore;
+                              
+                              // Determine if first matchup was a win
+                              const wonFirstMatchup = 
+                                (firstTeamScore !== null && firstOpponentScore !== null && firstTeamScore > firstOpponentScore) ||
+                                (firstMatchup.winner === "tie" ? false : 
+                                 (firstIsHome && firstMatchup.winner === "home") ||
+                                 (!firstIsHome && firstMatchup.winner === "away"));
+                              
+                              playoffLabel = wonFirstMatchup ? "Final" : "3rd-place game";
+                            } else {
+                              playoffLabel = matchup.week != null && !isNaN(matchup.week) ? `Week ${matchup.week}` : "Playoff";
+                            }
                             
                             return (
                               <div
                                 key={matchup._id}
-                                className={`border rounded-lg p-4 ${resultColor} transition-shadow hover:shadow-md`}
+                                className={`border-2 border-purple-500 rounded-lg p-4 ${resultColor} transition-shadow hover:shadow-md`}
                               >
                                 <div className="flex items-center justify-between mb-2">
                                   <span className="text-sm font-medium">
-                                    Week {matchup.week}
+                                    {playoffLabel}
                                   </span>
                                   <span className={`text-lg font-bold ${resultColor.split(" ")[1]}`}>
                                     {result || "—"}
@@ -435,7 +560,7 @@ export default async function TeamPage({
                                     <span>
                                       vs {opponent?.teamSeason?.teamNameThisYear || opponent?.teamName || opponent?.teamAbbrev || "Unknown"}
                                       {opponent?.teamSeason?.teamNameThisYear && opponent?.teamName && opponent?.teamSeason?.teamNameThisYear !== opponent?.teamName && (
-                                        <span className="text-xs"> ({opponent?.teamName})</span>
+                                        <span className="text-xs ml-1 opacity-75">({opponent?.teamName})</span>
                                       )}
                                     </span>
                                     <span>{opponentScore?.toFixed(1) || "—"}</span>
@@ -444,11 +569,8 @@ export default async function TeamPage({
                               </div>
                             );
                           })}
-                      </div>
-                    ) : (
-                      <div className="text-muted-foreground text-sm">
-                        <p>No matchup data available for this season.</p>
-                      </div>
+                        </div>
+                      </>
                     )}
                   </AccordionContent>
                 </AccordionItem>

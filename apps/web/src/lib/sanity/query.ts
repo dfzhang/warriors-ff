@@ -297,6 +297,34 @@ export const queryTeamSeasonMatchups = defineQuery(`
   }
 `);
 
+// Query to fetch playoff matchups for a team season
+export const queryTeamSeasonPlayoffMatchups = defineQuery(`
+  *[_type == "matchup" && season._ref == $seasonId && (homeTeam._ref == $teamRef || awayTeam._ref == $teamRef) && isPlayoff == true] | order(week asc){
+    _id,
+    week,
+    isPlayoff,
+    homeTeam->{
+      _id,
+      teamName,
+      teamAbbrev,
+      "teamSeason": *[_type == "teamSeason" && team._ref == ^._id && season._ref == $seasonId][0]{
+        teamNameThisYear
+      }
+    },
+    awayTeam->{
+      _id,
+      teamName,
+      teamAbbrev,
+      "teamSeason": *[_type == "teamSeason" && team._ref == ^._id && season._ref == $seasonId][0]{
+        teamNameThisYear
+      }
+    },
+    homeScore,
+    awayScore,
+    winner
+  }
+`);
+
 // Query to fetch all matchups for a team across all seasons (for total record and head-to-head, excluding playoffs)
 export const queryAllTeamMatchups = defineQuery(`
   *[_type == "matchup" && (homeTeam._ref == $teamRef || awayTeam._ref == $teamRef) && (isPlayoff != true || !defined(isPlayoff))] | order(season->year desc, week asc){
