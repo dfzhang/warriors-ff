@@ -358,6 +358,34 @@ export const queryTeamPaths = defineQuery(`
   }
 `);
 
+// Query to fetch draft picks for a specific season
+export const queryDraftPicksByYear = defineQuery(`
+  *[_type == "draftPick" && season->year == $year && defined(player)] | order(round asc, roundPick asc){
+    _id,
+    round,
+    roundPick,
+    keeper,
+    bidAmount,
+    team->{
+      _id,
+      teamId,
+      teamName,
+      teamAbbrev
+    },
+    player->{
+      _id,
+      playerId,
+      playerName,
+      position
+    }
+  }
+`);
+
+// Query to get all years that have draft picks (unique years)
+export const queryDraftYears = defineQuery(`
+  array::unique(*[_type == "draftPick" && defined(season->year)].season->year) | order(@ desc)
+`);
+
 const ogFieldsFragment = /* groq */ `
   _id,
   _type,

@@ -1,5 +1,5 @@
 import { sanityFetch } from "@/lib/sanity/live";
-import { queryGlobalSeoSettings, queryNavbarData } from "@/lib/sanity/query";
+import { queryGlobalSeoSettings, queryNavbarData, queryDraftYears } from "@/lib/sanity/query";
 import type {
   QueryGlobalSeoSettingsResult,
   QueryNavbarDataResult,
@@ -9,12 +9,43 @@ import { Logo } from "./logo";
 import { NavbarClient, NavbarSkeletonResponsive } from "./navbar-client";
 
 export async function NavbarServer() {
-  const [navbarData, settingsData] = await Promise.all([
+  const [navbarData, settingsData, draftYears] = await Promise.all([
     sanityFetch({ query: queryNavbarData }),
     sanityFetch({ query: queryGlobalSeoSettings }),
+    sanityFetch({ query: queryDraftYears }),
   ]);
+
+  // Add Drafts column with links to each year
+  const years = Array.isArray(draftYears.data) 
+    ? draftYears.data.filter((year): year is number => typeof year === "number").sort((a, b) => b - a)
+    : [];
+
+  const draftsColumn = {
+    _key: "drafts-column",
+    type: "column" as const,
+    title: "Drafts",
+    links: years.map((year) => ({
+      _key: `draft-${year}`,
+      name: year.toString(),
+      description: `${year} Draft History`,
+      icon: null,
+      href: `/draft/${year}`,
+      openInNewTab: false,
+    })),
+  };
+
+  // Add the drafts column to the navbar data
+  const navbarDataWithDrafts: QueryNavbarDataResult = {
+    _id: navbarData.data?._id || "navbar",
+    columns: [
+      ...(navbarData.data?.columns || []),
+      draftsColumn,
+    ],
+    buttons: navbarData.data?.buttons || [],
+  };
+
   return (
-    <Navbar navbarData={navbarData.data} settingsData={settingsData.data} />
+    <Navbar navbarData={navbarDataWithDrafts} settingsData={settingsData.data} />
   );
 }
 

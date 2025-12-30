@@ -222,6 +222,8 @@ async function importLeagueData() {
   // Step 4: Collect all unique players
   console.log("🏈 Collecting unique players...");
   const playersSet = new Map<number, PlayerData>();
+  
+  // First pass: collect all players from rosters (which have position data)
   for (const year of data.years) {
     for (const team of year.teams) {
       for (const player of team.roster) {
@@ -230,12 +232,29 @@ async function importLeagueData() {
         }
       }
     }
+  }
+  
+  // Second pass: add players from draft picks, but try to find their position from rosters
+  for (const year of data.years) {
     for (const draftPick of year.draft) {
       if (!playersSet.has(draftPick.player_id)) {
+        // Try to find this player's position from any roster across all years
+        let foundPosition = "";
+        for (const searchYear of data.years) {
+          for (const team of searchYear.teams) {
+            const rosterPlayer = team.roster.find(p => p.player_id === draftPick.player_id);
+            if (rosterPlayer && rosterPlayer.position) {
+              foundPosition = rosterPlayer.position;
+              break;
+            }
+          }
+          if (foundPosition) break;
+        }
+        
         playersSet.set(draftPick.player_id, {
           player_id: draftPick.player_id,
           player_name: draftPick.player_name,
-          position: "", // Will be set from roster if available
+          position: foundPosition, // Use found position or empty string
           eligible_positions: [],
         });
       }
@@ -255,7 +274,7 @@ async function importLeagueData() {
         _id: `player-${playerId}`,
         playerId: playerId,
         playerName: player.player_name,
-        position: player.position || "UNKNOWN",
+        position: player.position && player.position.trim() !== "" ? player.position : "UNKNOWN",
         eligiblePositions: player.eligible_positions || [],
       };
       await retryOperation(() => client.createOrReplace(playerDoc));
