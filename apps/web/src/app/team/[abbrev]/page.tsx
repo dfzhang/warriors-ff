@@ -85,14 +85,20 @@ export default async function TeamPage({
   let totalWins = 0;
   let totalLosses = 0;
   let totalTies = 0;
+  let totalPointsFor = 0;
+  let totalGames = 0;
 
   if (seasons && Array.isArray(seasons)) {
     for (const season of seasons) {
       totalWins += season.wins || 0;
       totalLosses += season.losses || 0;
       totalTies += season.ties || 0;
+      totalPointsFor += season.pointsFor || 0;
+      totalGames += (season.wins || 0) + (season.losses || 0) + (season.ties || 0);
     }
   }
+
+  const totalAveragePointsPerGame = totalGames > 0 ? totalPointsFor / totalGames : 0;
 
   // Fetch all matchups across all seasons for head-to-head records
   const allMatchups = await client.fetch(queryAllTeamMatchups, {
@@ -235,123 +241,141 @@ export default async function TeamPage({
 
       {/* Total Record Card */}
       <div className="mb-8">
-        <div className="bg-card border rounded-lg p-6">
-          <h2 className="text-2xl font-semibold mb-4">All-Time Record</h2>
-          <div className="text-4xl font-bold">
-            {totalWins}-{totalLosses}{totalTies > 0 ? `-${totalTies}` : ""}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="bg-card border rounded-lg p-6">
+            <h2 className="text-2xl font-semibold mb-4">All-Time Record</h2>
+            <div className="text-4xl font-bold">
+              {totalWins}-{totalLosses}{totalTies > 0 ? `-${totalTies}` : ""}
+            </div>
+            <p className="text-sm text-muted-foreground mt-2">
+              {totalWins + totalLosses + totalTies} total games
+            </p>
           </div>
-          <p className="text-sm text-muted-foreground mt-2">
-            {totalWins + totalLosses + totalTies} total games
-          </p>
+          <div className="bg-card border rounded-lg p-6">
+            <h2 className="text-2xl font-semibold mb-4">All-Time Average</h2>
+            <div className="text-4xl font-bold">
+              {totalAveragePointsPerGame.toFixed(2)}
+            </div>
+            <p className="text-sm text-muted-foreground mt-2">
+              Points per game
+            </p>
+          </div>
         </div>
       </div>
 
       {/* Head-to-Head Records */}
       {headToHeadArray.length > 0 && (
         <div className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">Head-to-Head Records</h2>
-          
-          {/* Green tier (> 55%) */}
-          {headToHeadArray.filter(r => r.winPercentage > 55).length > 0 && (
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-green-700 dark:text-green-400">
-                Winning Records (&gt; 55%)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {headToHeadArray
-                  .filter(record => record.winPercentage > 55)
-                  .map((record) => {
-                    const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
-                    const winPercentage = record.winPercentage;
-                    
-                    return (
-                      <div
-                        key={record.opponent._id}
-                        className="bg-green-50 dark:bg-green-950/20 border-2 border-green-500 rounded-lg p-4 hover:shadow-md transition-shadow"
-                      >
-                        <div className="font-semibold mb-2 text-sm">
-                          vs {opponentName}
-                        </div>
-                        <div className="text-2xl font-bold mb-1">
-                          {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          )}
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="head-to-head" className="border rounded-lg px-6 mb-4">
+              <AccordionTrigger className="hover:no-underline py-6">
+                <h2 className="text-2xl font-semibold">Head-to-Head Records</h2>
+              </AccordionTrigger>
+              <AccordionContent className="pb-6">
+                {/* Green tier (> 55%) */}
+                {headToHeadArray.filter(r => r.winPercentage > 55).length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-green-700 dark:text-green-400">
+                      Winning Records (&gt; 55%)
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      {headToHeadArray
+                        .filter(record => record.winPercentage > 55)
+                        .map((record) => {
+                          const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
+                          const winPercentage = record.winPercentage;
+                          
+                          return (
+                            <div
+                              key={record.opponent._id}
+                              className="bg-green-50 dark:bg-green-950/20 border-2 border-green-500 rounded-lg p-4 hover:shadow-md transition-shadow"
+                            >
+                              <div className="font-semibold mb-2 text-sm">
+                                vs {opponentName}
+                              </div>
+                              <div className="text-2xl font-bold mb-1">
+                                {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
 
-          {/* Yellow tier (45-55%) */}
-          {headToHeadArray.filter(r => r.winPercentage >= 45 && r.winPercentage <= 55).length > 0 && (
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-yellow-700 dark:text-yellow-400">
-                Even Records (45-55%)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {headToHeadArray
-                  .filter(record => record.winPercentage >= 45 && record.winPercentage <= 55)
-                  .map((record) => {
-                    const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
-                    const winPercentage = record.winPercentage;
-                    
-                    return (
-                      <div
-                        key={record.opponent._id}
-                        className="bg-yellow-50 dark:bg-yellow-950/20 border-2 border-yellow-500 rounded-lg p-4 hover:shadow-md transition-shadow"
-                      >
-                        <div className="font-semibold mb-2 text-sm">
-                          vs {opponentName}
-                        </div>
-                        <div className="text-2xl font-bold mb-1">
-                          {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          )}
+                {/* Yellow tier (45-55%) */}
+                {headToHeadArray.filter(r => r.winPercentage >= 45 && r.winPercentage <= 55).length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-yellow-700 dark:text-yellow-400">
+                      Even Records (45-55%)
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      {headToHeadArray
+                        .filter(record => record.winPercentage >= 45 && record.winPercentage <= 55)
+                        .map((record) => {
+                          const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
+                          const winPercentage = record.winPercentage;
+                          
+                          return (
+                            <div
+                              key={record.opponent._id}
+                              className="bg-yellow-50 dark:bg-yellow-950/20 border-2 border-yellow-500 rounded-lg p-4 hover:shadow-md transition-shadow"
+                            >
+                              <div className="font-semibold mb-2 text-sm">
+                                vs {opponentName}
+                              </div>
+                              <div className="text-2xl font-bold mb-1">
+                                {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
 
-          {/* Red tier (< 45%) */}
-          {headToHeadArray.filter(r => r.winPercentage < 45).length > 0 && (
-            <div className="mb-6">
-              <h3 className="text-lg font-semibold mb-3 text-red-700 dark:text-red-400">
-                Losing Records (&lt; 45%)
-              </h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-                {headToHeadArray
-                  .filter(record => record.winPercentage < 45)
-                  .map((record) => {
-                    const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
-                    const winPercentage = record.winPercentage;
-                    
-                    return (
-                      <div
-                        key={record.opponent._id}
-                        className="bg-red-50 dark:bg-red-950/20 border-2 border-red-500 rounded-lg p-4 hover:shadow-md transition-shadow"
-                      >
-                        <div className="font-semibold mb-2 text-sm">
-                          vs {opponentName}
-                        </div>
-                        <div className="text-2xl font-bold mb-1">
-                          {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
-                        </div>
-                        <div className="text-xs text-muted-foreground">
-                          {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          )}
+                {/* Red tier (< 45%) */}
+                {headToHeadArray.filter(r => r.winPercentage < 45).length > 0 && (
+                  <div className="mb-6">
+                    <h3 className="text-lg font-semibold mb-3 text-red-700 dark:text-red-400">
+                      Losing Records (&lt; 45%)
+                    </h3>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                      {headToHeadArray
+                        .filter(record => record.winPercentage < 45)
+                        .map((record) => {
+                          const opponentName = record.opponent.teamName || record.opponent.teamAbbrev || "Unknown";
+                          const winPercentage = record.winPercentage;
+                          
+                          return (
+                            <div
+                              key={record.opponent._id}
+                              className="bg-red-50 dark:bg-red-950/20 border-2 border-red-500 rounded-lg p-4 hover:shadow-md transition-shadow"
+                            >
+                              <div className="font-semibold mb-2 text-sm">
+                                vs {opponentName}
+                              </div>
+                              <div className="text-2xl font-bold mb-1">
+                                {record.wins}-{record.losses}{record.ties > 0 ? `-${record.ties}` : ""}
+                              </div>
+                              <div className="text-xs text-muted-foreground">
+                                {winPercentage.toFixed(1)}% win rate ({record.totalGames} games)
+                              </div>
+                            </div>
+                          );
+                        })}
+                    </div>
+                  </div>
+                )}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       )}
 
@@ -361,6 +385,10 @@ export default async function TeamPage({
           <Accordion type="multiple" className="w-full">
             {seasonsWithMatchups.map((season: any) => {
               const record = `${season.wins}-${season.losses}${season.ties > 0 ? `-${season.ties}` : ""}`;
+              const seasonGames = (season.wins || 0) + (season.losses || 0) + (season.ties || 0);
+              const seasonAveragePointsPerGame = seasonGames > 0 && season.pointsFor != null 
+                ? (season.pointsFor / seasonGames) 
+                : 0;
               
               return (
                 <AccordionItem key={season._id} value={season._id} className="border rounded-lg px-6 mb-4 relative overflow-hidden">
@@ -374,9 +402,12 @@ export default async function TeamPage({
                       <h3 className="text-xl font-semibold">
                         {season.year} Season{season.teamNameThisYear ? ` (${season.teamNameThisYear})` : ""}
                       </h3>
-                      <div className="text-sm">
+                      <div className="text-sm flex gap-4">
                         <span className="text-muted-foreground">
                           Record: <span className="font-medium">{record}</span>
+                        </span>
+                        <span className="text-muted-foreground">
+                          Avg: <span className="font-medium">{seasonAveragePointsPerGame.toFixed(2)} PPG</span>
                         </span>
                       </div>
                     </div>
