@@ -33,10 +33,10 @@ interface OgImageParams {
 
 // Default site configuration
 const siteConfig: SiteConfig = {
-  title: "Roboto Studio Demo",
-  description: "Roboto Studio Demo",
-  twitterHandle: "@studioroboto",
-  keywords: ["roboto", "studio", "demo", "sanity", "next", "react", "template"],
+  title: "Warriors Fantasy Football League",
+  description: "Warriors Fantasy Football League",
+  twitterHandle: "@daZhangerbanger",
+  keywords: [],
 };
 
 function generateOgImageUrl(params: OgImageParams = {}): string {
