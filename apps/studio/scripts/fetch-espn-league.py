@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Fetch Warriors Fantasy Football league data from ESPN and write
-league_1453378_football_history.json for import-league-data.ts.
+league_<league_id>_football_history.json for import-league-data.ts.
 
 Uses https://github.com/cwendt94/espn-api
 
@@ -26,17 +26,17 @@ from typing import Any
 from espn_api.football import League
 
 DEFAULT_LEAGUE_ID = 1453378
-DEFAULT_OUTPUT = "league_1453378_football_history.json"
 
 
 def repo_root() -> Path:
     return Path(__file__).resolve().parents[3]
 
 
-def output_path(explicit: str | None) -> Path:
+def output_path(explicit: str | None, league_id: int) -> Path:
     if explicit:
         return Path(explicit).resolve()
-    return repo_root() / DEFAULT_OUTPUT
+    filename = f"league_{league_id}_football_history.json"
+    return repo_root() / filename
 
 
 def load_env_file() -> None:
@@ -130,7 +130,7 @@ def extract_matchups(schedule: list[dict[str, Any]]) -> list[dict[str, Any]]:
                 "away_team_id": away_id,
                 "home_score": home.get("totalPoints"),
                 "away_score": away.get("totalPoints"),
-                "winner": None,
+                "winner": matchup.get("winner"),
                 "is_playoff": is_playoff,
             }
         )
@@ -233,32 +233,41 @@ def fetch_year(
     swid: str,
 ) -> dict[str, Any]:
     print(f"  Fetching {year}...")
-    league = League(
-        league_id=league_id,
-        year=year,
-        espn_s2=espn_s2,
-        swid=swid,
-    )
+    try:
+        league = League(
+            league_id=league_id,
+            year=year,
+            espn_s2=espn_s2,
+            swid=swid,
+        )
 
-    raw = league.espn_request.get_league()
-    schedule = raw.get("schedule", [])
+        raw = league.espn_request.get_league()
+        schedule = raw.get("schedule", [])
 
-    return {
-        "year": year,
-        "league_id": league_id,
-        "sport": "football",
-        "current_week": league.current_week,
-        "final_scoring_period": league.finalScoringPeriod,
-        "settings": {
-            "name": league.settings.name,
-            "scoring_type": league.settings.scoring_type or "H2H_POINTS",
-            "num_teams": league.settings.team_count,
-        },
-        "teams": [serialize_team(team, schedule) for team in league.teams],
-        "standings": serialize_standings(league.teams),
-        "matchups": extract_matchups(schedule),
-        "draft": serialize_draft(league),
-    }
+        return {
+            "year": year,
+            "league_id": league_id,
+            "sport": "football",
+            "current_week": league.current_week,
+            "final_scoring_period": league.finalScoringPeriod,
+            "settings": {
+                "name": league.settings.name,
+                "scoring_type": league.settings.scoring_type or "H2H_POINTS",
+                "num_teams": league.settings.team_count,
+            },
+            "teams": [serialize_team(team, schedule) for team in league.teams],
+            "standings": serialize_standings(league.teams),
+            "matchups": extract_matchups(schedule),
+            "draft": serialize_draft(league),
+        }
+    except Exception as e:
+        error_msg = f"Failed to fetch league {league_id} for year {year}: {e}"
+        print(f"  Error: {error_msg}", file=sys.stderr)
+        return {
+            "year": year,
+            "league_id": league_id,
+            "error": error_msg,
+        }
 
 
 def resolve_years(
@@ -290,7 +299,14 @@ def merge_years(
     existing: dict[str, Any] | None,
     fetched_years: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    league_id = fetched_years[0]["league_id"]
+    if fetched_years:
+        league_id = fetched_years[0]["league_id"]
+    elif existing:
+        league_id = existing.get("league_id")
+    else:
+        print("Error: No fetched years and no existing data to merge.", file=sys.stderr)
+        sys.exit(1)
+
     by_year = {}
 
     if existing:
@@ -312,10 +328,18 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Fetch ESPN fantasy football league data into JSON."
     )
+
+    # Parse LEAGUE_ID from environment with error handling
+    league_id_env = os.environ.get("LEAGUE_ID", str(DEFAULT_LEAGUE_ID))
+    try:
+        league_id_default = int(league_id_env)
+    except ValueError:
+        parser.error(f"LEAGUE_ID environment variable must be an integer, got: {league_id_env}")
+
     parser.add_argument(
         "--league-id",
         type=int,
-        default=int(os.environ.get("LEAGUE_ID", DEFAULT_LEAGUE_ID)),
+        default=league_id_default,
         help=f"ESPN league id (default: {DEFAULT_LEAGUE_ID})",
     )
     parser.add_argument(
@@ -332,7 +356,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument(
         "--output",
-        help=f"Output JSON path (default: repo root/{DEFAULT_OUTPUT})",
+        help="Output JSON path (default: repo root/league_<league_id>_football_history.json)",
     )
     parser.add_argument(
         "--no-merge",
@@ -346,7 +370,7 @@ def main() -> None:
     load_env_file()
     args = parse_args()
     espn_s2, swid = get_credentials()
-    out = output_path(args.output)
+    out = output_path(args.output, args.league_id)
 
     years = resolve_years(
         league_id=args.league_id,
@@ -364,10 +388,22 @@ def main() -> None:
 
     existing = None
     if out.exists() and not args.no_merge:
-        existing = json.loads(out.read_text(encoding="utf-8"))
+        try:
+            existing = json.loads(out.read_text(encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            print(f"Error: Failed to parse existing JSON at {out}: {e}", file=sys.stderr)
+            sys.exit(1)
+        except OSError as e:
+            print(f"Error: Failed to read existing file at {out}: {e}", file=sys.stderr)
+            sys.exit(1)
 
     payload = merge_years(existing, fetched_years)
-    out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+
+    try:
+        out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
+    except OSError as e:
+        print(f"Error: Failed to write output file at {out}: {e}", file=sys.stderr)
+        sys.exit(1)
 
     print(f"\nWrote {out}")
     print(f"  Years: {len(payload['years'])}")
