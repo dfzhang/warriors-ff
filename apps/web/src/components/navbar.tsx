@@ -1,5 +1,9 @@
 import { sanityFetch } from "@/lib/sanity/live";
-import { queryGlobalSeoSettings, queryNavbarData, queryDraftYears } from "@/lib/sanity/query";
+import {
+  queryDraftYears,
+  queryGlobalSeoSettings,
+  queryNavbarData,
+} from "@/lib/sanity/query";
 import type {
   QueryGlobalSeoSettingsResult,
   QueryNavbarDataResult,
@@ -16,8 +20,10 @@ export async function NavbarServer() {
   ]);
 
   // Add Drafts column with links to each year
-  const years = Array.isArray(draftYears.data) 
-    ? draftYears.data.filter((year): year is number => typeof year === "number").sort((a, b) => b - a)
+  const years = Array.isArray(draftYears.data)
+    ? draftYears.data
+        .filter((year): year is number => typeof year === "number")
+        .sort((a, b) => b - a)
     : [];
 
   const draftsColumn = {
@@ -34,18 +40,42 @@ export async function NavbarServer() {
     })),
   };
 
+  const leagueColumn = {
+    _key: "league-column",
+    type: "column" as const,
+    title: "League",
+    links: [
+      {
+        _key: "league-rules",
+        name: "Rules",
+        description: "Roster, keeper, and trade rules",
+        icon: null,
+        href: "/rules",
+        openInNewTab: false,
+      },
+      {
+        _key: "league-keepers",
+        name: "Keeper tracker",
+        description: "Keeper history and next-season eligibility",
+        icon: null,
+        href: "/keepers",
+        openInNewTab: false,
+      },
+    ],
+  };
+
   // Add the drafts column to the navbar data
   const navbarDataWithDrafts: QueryNavbarDataResult = {
     _id: navbarData.data?._id || "navbar",
-    columns: [
-      ...(navbarData.data?.columns || []),
-      draftsColumn,
-    ],
+    columns: [...(navbarData.data?.columns || []), leagueColumn, draftsColumn],
     buttons: navbarData.data?.buttons || [],
   };
 
   return (
-    <Navbar navbarData={navbarDataWithDrafts} settingsData={settingsData.data} />
+    <Navbar
+      navbarData={navbarDataWithDrafts}
+      settingsData={settingsData.data}
+    />
   );
 }
 
