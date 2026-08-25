@@ -11,24 +11,46 @@ import { client } from "@/lib/sanity/client";
 import { sanityFetch } from "@/lib/sanity/live";
 import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryTeamSeasonPlayoffMatchups, queryAllTeamMatchups } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
+import { getTeamRouteSegment, sanitizeTeamRouteSegment } from "@/lib/team-route";
+
+type TeamPathRecord = {
+  abbrev: string | null;
+  teamId: number;
+};
 
 async function fetchTeamData(abbrev: string, stega = true) {
-  const result = await sanityFetch({
+  let result = await sanityFetch({
     query: queryTeamBySlug,
     params: { abbrev },
     stega,
   });
+
+  if (result.data) return result;
+
+  const teams = (await client.fetch(queryTeamPaths)) as TeamPathRecord[];
+  const normalizedAbbrev = sanitizeTeamRouteSegment(abbrev).toLowerCase();
+  const matchingTeam = teams.find(
+    (team) =>
+      sanitizeTeamRouteSegment(team.abbrev ?? "").toLowerCase() === normalizedAbbrev,
+  );
+
+  if (matchingTeam) {
+    result = await sanityFetch({
+      query: queryTeamBySlug,
+      params: { abbrev: String(matchingTeam.teamId) },
+      stega,
+    });
+  }
   
   return result;
 }
-
 async function fetchTeamPaths() {
-  const teams = await client.fetch(queryTeamPaths);
+  const teams = (await client.fetch(queryTeamPaths)) as TeamPathRecord[];
   // Filter out teams without abbreviations and map to route params
   const paths = teams
-    .filter((team: { abbrev: string | null }) => team.abbrev && team.abbrev.trim() !== "")
-    .map((team: { abbrev: string }) => ({
-      abbrev: team.abbrev.trim(),
+    .filter((team) => team.abbrev && team.abbrev.trim() !== "")
+    .map((team) => ({
+      abbrev: getTeamRouteSegment(team.abbrev, team.teamId),
     }));
   
   // If no teams with abbreviations, fall back to team IDs
