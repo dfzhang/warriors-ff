@@ -355,7 +355,17 @@ export const queryAllTeamMatchups = defineQuery(`
 
 export const queryTeamPaths = defineQuery(`
   *[_type == "team" && defined(teamAbbrev) && teamAbbrev != null]{
-    "abbrev": teamAbbrev
+    "abbrev": teamAbbrev,
+    teamId
+  }
+`);
+
+export const queryAllTeams = defineQuery(`
+  *[_type == "team"] | order(teamId asc){
+    _id,
+    teamId,
+    teamName,
+    teamAbbrev
   }
 `);
 
@@ -385,6 +395,35 @@ export const queryDraftPicksByYear = defineQuery(`
 // Query to get all years that have draft picks (unique years)
 export const queryDraftYears = defineQuery(`
   array::unique(*[_type == "draftPick" && defined(season->year)].season->year) | order(@ desc)
+`);
+
+// Keeper history across every season. Tenure is calculated in the web app so
+// it follows the player across teams, as required by the league rules.
+export const queryKeeperHistory = defineQuery(`
+  *[
+    _type == "draftPick" &&
+    keeper == true &&
+    defined(season->year) &&
+    defined(team) &&
+    defined(player)
+  ] | order(season->year desc, team->teamId asc, round asc){
+    _id,
+    "year": season->year,
+    round,
+    roundPick,
+    team->{
+      _id,
+      teamId,
+      teamName,
+      teamAbbrev
+    },
+    player->{
+      _id,
+      playerId,
+      playerName,
+      position
+    }
+  }
 `);
 
 const ogFieldsFragment = /* groq */ `
