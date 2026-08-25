@@ -15,6 +15,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly",
       priority: 1,
     },
+    {
+      url: `${baseUrl}/rules`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/keepers`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
     ...slugPages.map((page) => ({
       url: `${baseUrl}${page.slug}`,
       lastModified: new Date(page.lastModified ?? new Date()),
