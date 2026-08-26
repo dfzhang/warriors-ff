@@ -1,6 +1,7 @@
 import {
   ArrowRight,
   CircleDollarSign,
+  MessageSquareQuote,
   RefreshCcw,
   Repeat2,
   ShieldCheck,
@@ -30,20 +31,102 @@ const rosterSlots = [
 const keeperStages = [
   {
     eyebrow: "First keeper season",
-    title: "Original acquisition price",
-    body: "Use the round where the player was drafted in the previous season. A waiver-wire player costs a seventh-round pick.",
+    title: "Original draft price",
+    body: "Use the player's prior-season draft round, capped at Round 7. A truly undrafted waiver or free-agent pickup costs a seventh-round pick.",
   },
   {
     eyebrow: "Second keeper season",
     title: "Current ADP price",
-    body: "Use the player's current ADP to determine the round, regardless of the player's original draft position.",
+    body: "Use that season's FantasyPros Superflex ADP, even when it produces a later round than the player's previous keeper cost.",
   },
   {
     eyebrow: "After two keeper seasons",
     title: "Back to the draft pool",
-    body: "The player is no longer keeper-eligible and must be available in the next draft.",
+    body: "The player is no longer keeper-eligible and must be available in the following draft.",
   },
 ];
+
+const messageSnapshots = [
+  {
+    date: "August 17, 2023",
+    speaker: "Your reigning (lucky) champion",
+    topic: "Keeper pricing",
+    quote:
+      "Year 1 of keeping a player is based on round that you drafted in previous year. Year 2 is adjusted to ADP of current year.",
+    conclusion:
+      "Year 1 uses the original draft round; Year 2 uses current-season ADP.",
+  },
+  {
+    date: "August 23, 2026",
+    speaker: "Prince Pancake",
+    topic: "Official ADP source",
+    quote:
+      "If you kept a player two years in a row, then the draft position would be ADP per Fantasy Pros Superflex.",
+    conclusion:
+      "FantasyPros Superflex is the confirmed ADP format for second-year keepers.",
+  },
+  {
+    date: "August 17, 2023",
+    speaker: "Prince Pancake",
+    topic: "Drops and trades",
+    quote:
+      "If a player is drafted, he retains his value regardless of trade or drop.",
+    conclusion:
+      "A drafted player keeps the original draft-round value after a drop or trade. Only a truly undrafted pickup gets the Round 7 waiver value.",
+  },
+  {
+    date: "August 19, 2026",
+    speaker: "Prince Pancake",
+    topic: "Keeper positions",
+    quote: "You can keep any type of player.",
+    conclusion:
+      "The two keepers may be any position mix, including two quarterbacks.",
+  },
+  {
+    date: "November 27, 2024",
+    speaker: "Prince Pancake",
+    topic: "Trade deadline",
+    quote: "Yes agreed.",
+    context:
+      "In reply to: “Let's definitely agree no trading during playoffs though?”",
+    conclusion:
+      "Trades stop once the playoffs begin. The exact regular-season cutoff still needs to be set.",
+  },
+];
+
+function MessageSnapshot({
+  date,
+  speaker,
+  topic,
+  quote,
+  context,
+  conclusion,
+}: (typeof messageSnapshots)[number]) {
+  return (
+    <article className="rounded-2xl border bg-card p-5 shadow-sm">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <span className="rounded-full bg-primary/10 px-2.5 py-1 text-xs font-semibold text-primary">
+          {topic}
+        </span>
+        <span className="text-xs text-muted-foreground">{date}</span>
+      </div>
+      {context && (
+        <p className="mt-4 text-xs italic leading-5 text-muted-foreground">
+          {context}
+        </p>
+      )}
+      <blockquote className="mt-3 border-l-2 border-primary/40 pl-4 text-sm leading-6">
+        “{quote}”
+      </blockquote>
+      <p className="mt-2 text-xs font-medium text-muted-foreground">
+        — {speaker} · Facebook league thread
+      </p>
+      <p className="mt-4 border-t pt-4 text-sm leading-6">
+        <strong>Documented rule:</strong> {conclusion}
+      </p>
+    </article>
+  );
+}
 
 export default function RulesPage() {
   return (
@@ -56,8 +139,8 @@ export default function RulesPage() {
           League rules
         </h1>
         <p className="mt-4 text-lg leading-8 text-muted-foreground">
-          The practical version of the roster, payment, keeper, and draft-pick
-          trade rules.
+          The written rules, updated with commissioner clarifications preserved
+          in the league&apos;s Facebook message history.
         </p>
       </header>
 
@@ -95,14 +178,16 @@ export default function RulesPage() {
               <CircleDollarSign className="size-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="text-sm text-muted-foreground">Annual buy-in</p>
+              <p className="text-sm text-muted-foreground">
+                Last confirmed annual buy-in
+              </p>
               <h2 className="text-3xl font-bold">$100</h2>
             </div>
           </div>
           <p className="mt-5 text-sm leading-6 text-muted-foreground">
-            If the buy-in is a concern, message Scott, Ben, or Chris privately.
-            The priority is keeping everyone in the league, and arrangements can
-            be made.
+            A 2026 increase was put to a poll, but the exported thread contains
+            no final commissioner ruling. If payment is a concern, message
+            Scott, Ben, or Chris privately; arrangements can be made.
           </p>
         </div>
       </section>
@@ -115,8 +200,9 @@ export default function RulesPage() {
           </h2>
         </div>
         <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
-          Each team may keep zero, one, or two players. A player may be retained
-          for no more than two consecutive keeper seasons.
+          Each team may keep zero, one, or two players in any position
+          combination. A player may be retained for no more than two consecutive
+          keeper seasons.
         </p>
 
         <div className="mt-7 grid gap-4 lg:grid-cols-3">
@@ -153,25 +239,28 @@ export default function RulesPage() {
           <h2 className="text-2xl font-bold">Keeper pricing details</h2>
           <ol className="mt-5 space-y-5 text-sm leading-6">
             <li>
-              <strong className="block text-base">First-year keeper</strong>
-              The cost is the round in which the player was actually drafted the
-              prior season.
+              <strong className="block text-base">Round 7 is the cap</strong>
+              Any original draft value later than Round 7 is priced at Round 7.
+              A truly undrafted waiver or free-agent pickup also costs Round 7.
             </li>
             <li>
-              <strong className="block text-base">Waiver acquisition</strong>A
-              player acquired from waivers is treated as a seventh-round pick
-              for first-year keeper pricing.
+              <strong className="block text-base">
+                Drafted, dropped, or traded
+              </strong>
+              Once drafted, a player retains that draft-round value for their
+              first keeper season even if they are dropped, claimed by another
+              team, or traded.
             </li>
             <li>
               <strong className="block text-base">Same-round conflict</strong>
-              If two keepers are priced by ADP in the same round, one uses that
-              round and the other moves one round earlier. For example, ADPs of
-              65 and 69 cost sixth- and seventh-round picks in a 10-team league.
+              If two keepers map to the same round, one uses that round and the
+              other moves one round earlier. For example, two Round 7 values
+              cost sixth- and seventh-round picks.
             </li>
             <li>
               <strong className="block text-base">Second-year keeper</strong>
-              The cost resets to the round indicated by current ADP. In a
-              10-team league, an ADP of 59 maps to Round 6.
+              Use current FantasyPros Superflex ADP, even if that produces a
+              cheaper round than the prior keeper price.
             </li>
           </ol>
         </article>
@@ -188,8 +277,8 @@ export default function RulesPage() {
                 <strong className="block text-base">
                   The clock follows the player
                 </strong>
-                Trading a previously kept player does not restart their keeper
-                tenure or restore an earlier value.
+                A trade or drop does not restart keeper tenure or restore an
+                earlier value.
               </p>
             </div>
             <div className="flex gap-3">
@@ -201,8 +290,9 @@ export default function RulesPage() {
                 <strong className="block text-base">
                   Draft-pick trades must balance
                 </strong>
-                Each side must exchange the same number of picks. The rounds do
-                not need to match.
+                Each side exchanges the same number of picks; the rounds may
+                differ. A manager trading future picks must participate the
+                following season.
               </p>
             </div>
             <div className="flex gap-3">
@@ -214,27 +304,71 @@ export default function RulesPage() {
                 <strong className="block text-base">
                   Traded-player exception
                 </strong>
-                If a player was acquired in a trade involving draft picks and
-                their keeper ADP maps to the specific round sent away in that
-                deal, the keeper moves one round earlier. For example, a player
-                with a Round 3 ADP costs a second-round pick if that deal sent
-                away the team&apos;s third-round pick.
+                If a player&apos;s keeper cost maps to a round the team already
+                traded away in that deal, the keeper moves one round earlier.
+              </p>
+            </div>
+            <div className="flex gap-3">
+              <ShieldCheck
+                className="mt-0.5 size-5 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              <p>
+                <strong className="block text-base">
+                  No playoff-period trades
+                </strong>
+                The commissioners agreed that trading stops when the playoffs
+                begin. The regular-season cutoff remains open.
               </p>
             </div>
           </div>
         </article>
       </section>
 
-      <aside className="mt-10 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-        <h2 className="font-semibold">Commissioner clarifications needed</h2>
-        <p className="mt-2 text-sm leading-6">
-          Before these rules are final, confirm the official ADP source, scoring
-          format, snapshot date, and round-mapping method. Also confirm edge
-          cases for Round 1 conflicts, values beyond the final draft round,
-          waiver-versus-free-agent pickups, and whether a season back in the
-          draft pool resets the keeper clock. The tracker currently treats a gap
-          as a reset while keeping the clock attached to a traded player.
+      <section className="mt-14" aria-labelledby="evidence-heading">
+        <div className="flex items-center gap-3">
+          <MessageSquareQuote className="size-6" aria-hidden="true" />
+          <h2 id="evidence-heading" className="text-3xl font-bold">
+            Message-backed clarifications
+          </h2>
+        </div>
+        <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+          These snapshots preserve the relevant commissioner language from the
+          Facebook export. They document how the written rules have been
+          interpreted without publishing unrelated private conversation.
         </p>
+        <div className="mt-7 grid gap-5 lg:grid-cols-2">
+          {messageSnapshots.map((snapshot) => (
+            <MessageSnapshot
+              key={`${snapshot.date}-${snapshot.topic}`}
+              {...snapshot}
+            />
+          ))}
+        </div>
+      </section>
+
+      <aside className="mt-10 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
+        <h2 className="font-semibold">Open commissioner decisions</h2>
+        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6">
+          <li>Record the final 2026 buy-in after the poll closes.</li>
+          <li>
+            Set the exact regular-season trade deadline, including draft-pick
+            trades.
+          </li>
+          <li>
+            Decide whether a team-manager change affects the player&apos;s
+            keeper clock; Josh Allen is recorded in 2023, 2024, and 2025.
+          </li>
+          <li>
+            Codify whether postseason add/drop activity is allowed for keeper
+            purposes; a December 2025 transaction was reset, but no standing
+            rule was recorded.
+          </li>
+          <li>
+            Record the FantasyPros snapshot date, ADP-to-round mapping, and
+            Round 1 collision procedure.
+          </li>
+        </ul>
       </aside>
     </main>
   );

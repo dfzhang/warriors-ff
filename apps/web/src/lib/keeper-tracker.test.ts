@@ -2,7 +2,6 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import {
-  getKeeperOutlook,
   getKeeperStreak,
   type KeeperPick,
   normalizeKeeperHistory,
@@ -37,26 +36,29 @@ test("keeper tenure follows a player across teams", () => {
   const history = [keeper(2024, 10, 1), keeper(2025, 10, 2)];
 
   assert.equal(getKeeperStreak(history[1]!, history), 2);
-  assert.equal(getKeeperOutlook(2), "pool");
 });
 
 test("a gap resets consecutive keeper tenure", () => {
   const history = [keeper(2023, 10, 1), keeper(2025, 10, 1)];
 
   assert.equal(getKeeperStreak(history[1]!, history), 1);
-  assert.equal(getKeeperOutlook(1), "adp");
 });
 
-test("known incorrect Josh Allen 2025 record is excluded", () => {
+test("Josh Allen's 2025 keeper record is retained and flagged for review", () => {
   const normalized = normalizeKeeperHistory([
+    keeper(2023, 3918298, 9),
     keeper(2024, 3918298, 9),
     keeper(2025, 3918298, 9),
   ]);
 
-  assert.equal(normalized.correctionsApplied, 1);
   assert.deepEqual(
     normalized.history.map((pick) => pick.year),
-    [2024],
+    [2023, 2024, 2025],
+  );
+  assert.equal(getKeeperStreak(normalized.history[2]!, normalized.history), 3);
+  assert.equal(
+    normalized.issues.some((issue) => issue.code === "keeper-limit"),
+    true,
   );
 });
 

@@ -17,22 +17,15 @@ export interface KeeperPick {
   };
 }
 
-export type KeeperOutlook = "adp" | "pool" | "data-conflict";
-
 export interface KeeperHistoryIssue {
-  code: "duplicate-player-year" | "team-limit";
+  code: "duplicate-player-year" | "keeper-limit" | "team-limit";
   message: string;
 }
 
 export interface NormalizedKeeperHistory {
   history: KeeperPick[];
   issues: KeeperHistoryIssue[];
-  correctionsApplied: number;
 }
-
-// The 2025 import incorrectly marked Josh Allen as a keeper. Keep this
-// correction close to the tracker logic until the source record is repaired.
-const knownIncorrectKeeperRecords = new Set(["2025:3918298"]);
 
 function samePlayer(a: KeeperPick, b: KeeperPick) {
   return a.player.playerId === b.player.playerId;
@@ -63,26 +56,14 @@ export function getKeeperStreak(
   return streak;
 }
 
-export function getKeeperOutlook(streak: number): KeeperOutlook {
-  if (streak > 2) return "data-conflict";
-  if (streak === 2) return "pool";
-  return "adp";
-}
-
 export function normalizeKeeperHistory(
   history: KeeperPick[],
 ): NormalizedKeeperHistory {
   const issues: KeeperHistoryIssue[] = [];
   const uniquePlayerYears = new Map<string, KeeperPick>();
-  let correctionsApplied = 0;
 
   for (const pick of history) {
     const playerYearKey = `${pick.year}:${pick.player.playerId}`;
-
-    if (knownIncorrectKeeperRecords.has(playerYearKey)) {
-      correctionsApplied += 1;
-      continue;
-    }
 
     const existing = uniquePlayerYears.get(playerYearKey);
     if (existing) {
@@ -118,10 +99,19 @@ export function normalizeKeeperHistory(
     });
   }
 
+  for (const pick of normalizedHistory) {
+    const streak = getKeeperStreak(pick, normalizedHistory);
+    if (streak <= 2) continue;
+
+    issues.push({
+      code: "keeper-limit",
+      message: `${pick.player.playerName} is recorded as a keeper for ${streak} consecutive seasons through ${pick.year}; the written limit is two and commissioner review is required.`,
+    });
+  }
+
   return {
     history: normalizedHistory,
     issues,
-    correctionsApplied,
   };
 }
 
