@@ -1,4 +1,4 @@
-import { AlertTriangle, History } from "lucide-react";
+import { Users } from "lucide-react";
 import type { Metadata } from "next";
 
 import {
@@ -8,7 +8,10 @@ import {
   normalizeKeeperHistory,
 } from "@/lib/keeper-tracker";
 import { sanityFetch } from "@/lib/sanity/live";
-import { queryKeeperHistory } from "@/lib/sanity/query";
+import { queryAllTeams, queryKeeperHistory } from "@/lib/sanity/query";
+
+import { KeeperTenureStatus } from "./keeper-tenure-status";
+import { type KeeperYearRow, KeeperYearTable } from "./keeper-year-table";
 
 export const metadata: Metadata = {
   title: "Keeper Tracker",
@@ -1043,44 +1046,21 @@ const keeperFallback = {
   teams: KeeperPick["team"][];
 };
 
-const tenureStyles = {
-  1: "border-sky-300 bg-sky-50 text-sky-900 dark:border-sky-900 dark:bg-sky-950/40 dark:text-sky-100",
-  2: "border-rose-300 bg-rose-50 text-rose-900 dark:border-rose-900 dark:bg-rose-950/40 dark:text-rose-100",
-  review:
-    "border-amber-300 bg-amber-50 text-amber-950 dark:border-amber-900 dark:bg-amber-950/40 dark:text-amber-100",
-};
-
-function TenureStatus({ season, streak }: { season: number; streak: number }) {
-  const isOverLimit = streak > 2;
-  const style = isOverLimit
-    ? tenureStyles.review
-    : tenureStyles[streak === 2 ? 2 : 1];
-  const detail =
-    streak === 1
-      ? `Eligible in ${season + 1} at ADP`
-      : streak === 2
-        ? `Returns to draft pool in ${season + 1}`
-        : "Exceeds the written limit · review";
-
-  return (
-    <div className="flex flex-col items-start gap-1.5 sm:items-end">
-      <span
-        className={`inline-flex rounded-full border px-2.5 py-1 text-xs font-semibold ${style}`}
-      >
-        Year {streak}
-      </span>
-      <span className="text-xs text-muted-foreground">{detail}</span>
-    </div>
-  );
-}
-
 export default async function KeepersPage() {
-  const historyResult = await sanityFetch({ query: queryKeeperHistory });
+  const [historyResult, teamsResult] = await Promise.all([
+    sanityFetch({ query: queryKeeperHistory }),
+    sanityFetch({ query: queryAllTeams }),
+  ]);
   const sanityHistory = historyResult.data as KeeperPick[] | null;
+  const sanityTeams = teamsResult.data as KeeperPick["team"][] | null;
   const rawHistory =
     Array.isArray(sanityHistory) && sanityHistory.length > 0
       ? sanityHistory
       : keeperFallback.history;
+  const rawTeams =
+    Array.isArray(sanityTeams) && sanityTeams.length > 0
+      ? sanityTeams
+      : keeperFallback.teams;
 
   const validHistory = rawHistory.filter((pick): pick is KeeperPick =>
     Boolean(
@@ -1093,7 +1073,7 @@ export default async function KeepersPage() {
       typeof pick.player.playerId === "number",
     ),
   );
-  const { history, issues } = normalizeKeeperHistory(validHistory);
+  const { history } = normalizeKeeperHistory(validHistory);
   const years = [...new Set(history.map((pick) => pick.year))].sort(
     (a, b) => b - a,
   );
@@ -1109,6 +1089,31 @@ export default async function KeepersPage() {
       </main>
     );
   }
+
+  const teams = rawTeams
+    .filter((team) => team && typeof team.teamId === "number")
+    .filter(
+      (team, index, allTeams) =>
+        allTeams.findIndex((candidate) => candidate.teamId === team.teamId) ===
+        index,
+    )
+    .sort((a, b) => a.teamId - b.teamId);
+  const yearRows: KeeperYearRow[] = [...history]
+    .sort(
+      (a, b) =>
+        b.year - a.year ||
+        a.round - b.round ||
+        a.roundPick - b.roundPick ||
+        a.player.playerName.localeCompare(b.player.playerName),
+    )
+    .map((pick) => ({
+      id: pick._id,
+      year: pick.year,
+      playerName: pick.player.playerName,
+      teamName: pick.team.teamName.trim(),
+      roundLabel: formatRound(pick.round),
+      streak: getKeeperStreak(pick, history),
+    }));
 
   return (
     <main className="container mx-auto px-4 py-10 md:px-6 md:py-14">
@@ -1144,112 +1149,112 @@ export default async function KeepersPage() {
             <strong>Year 2</strong> · returns to the next draft pool
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <span
-            className="size-3 rounded-full bg-amber-500"
-            aria-hidden="true"
-          />
-          <span>
-            <strong>Year 3+</strong> · commissioner review
-          </span>
-        </div>
       </section>
 
-      <section className="mt-12 space-y-8" aria-labelledby="history-heading">
+      <KeeperYearTable years={years} rows={yearRows} initialYear={latestYear} />
+
+      <section className="mt-14" aria-labelledby="team-history-heading">
         <div className="flex items-center gap-3">
-          <History className="size-6" aria-hidden="true" />
-          <h2 id="history-heading" className="text-3xl font-bold">
-            Previous keepers
+          <Users className="size-6" aria-hidden="true" />
+          <h2 id="team-history-heading" className="text-3xl font-bold">
+            Keeper history by team
           </h2>
         </div>
+        <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
+          Jump to a team to see every recorded keeper and draft-round cost.
+        </p>
 
-        {years.map((year) => {
-          const seasonKeepers = history
-            .filter((pick) => pick.year === year)
-            .sort(
-              (a, b) =>
-                a.round - b.round ||
-                a.roundPick - b.roundPick ||
-                a.player.playerName.localeCompare(b.player.playerName),
-            );
-
-          return (
-            <article
-              key={year}
-              className="overflow-hidden rounded-2xl border bg-card shadow-sm"
+        <nav className="mt-5 flex flex-wrap gap-2" aria-label="Jump to team">
+          {teams.map((team) => (
+            <a
+              key={`jump-${team.teamId}`}
+              href={`#team-${team.teamId}`}
+              className="rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors hover:bg-muted"
             >
-              <header className="flex items-baseline justify-between gap-4 border-b bg-muted/40 px-5 py-4">
-                <h3 className="text-xl font-semibold">{year} keepers</h3>
-                <span className="text-sm text-muted-foreground">
-                  {seasonKeepers.length} players
-                </span>
-              </header>
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[680px] text-left text-sm">
-                  <caption className="sr-only">
-                    Keeper records from the {year} draft
-                  </caption>
-                  <thead className="text-xs uppercase tracking-wide text-muted-foreground">
-                    <tr>
-                      <th scope="col" className="px-5 py-3 font-semibold">
-                        Player
-                      </th>
-                      <th scope="col" className="px-3 py-3 font-semibold">
-                        Team
-                      </th>
-                      <th scope="col" className="px-3 py-3 font-semibold">
-                        Cost
-                      </th>
-                      <th
-                        scope="col"
-                        className="px-5 py-3 text-right font-semibold"
-                      >
-                        Keeper tenure
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y">
-                    {seasonKeepers.map((pick) => {
-                      const streak = getKeeperStreak(pick, history);
+              {team.teamAbbrev || team.teamName.trim()}
+            </a>
+          ))}
+        </nav>
 
-                      return (
-                        <tr key={pick._id}>
-                          <td className="px-5 py-4 font-semibold">
-                            {pick.player.playerName}
-                          </td>
-                          <td className="px-3 py-4 text-muted-foreground">
-                            {pick.team.teamName.trim()}
-                          </td>
-                          <td className="px-3 py-4">
-                            {formatRound(pick.round)}
-                          </td>
-                          <td className="px-5 py-4">
-                            <TenureStatus season={year} streak={streak} />
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
-              </div>
-            </article>
-          );
-        })}
+        <div className="mt-7 grid gap-5 lg:grid-cols-2">
+          {teams.map((team) => {
+            const teamHistory = history
+              .filter((pick) => pick.team.teamId === team.teamId)
+              .sort((a, b) => b.year - a.year || a.round - b.round);
+
+            return (
+              <article
+                key={team.teamId}
+                id={`team-${team.teamId}`}
+                className="scroll-mt-24 overflow-hidden rounded-2xl border bg-card shadow-sm"
+              >
+                <header className="border-b bg-muted/40 px-5 py-4">
+                  <div className="flex items-baseline justify-between gap-4">
+                    <h3 className="font-semibold">{team.teamName.trim()}</h3>
+                    {team.teamAbbrev && (
+                      <span className="text-xs font-semibold text-muted-foreground">
+                        {team.teamAbbrev}
+                      </span>
+                    )}
+                  </div>
+                </header>
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[520px] text-left text-sm">
+                    <caption className="sr-only">
+                      Keeper history for {team.teamName.trim()}
+                    </caption>
+                    <thead className="text-xs uppercase tracking-wide text-muted-foreground">
+                      <tr>
+                        <th scope="col" className="px-5 py-3 font-semibold">
+                          Season
+                        </th>
+                        <th scope="col" className="px-3 py-3 font-semibold">
+                          Player
+                        </th>
+                        <th scope="col" className="px-3 py-3 font-semibold">
+                          Cost
+                        </th>
+                        <th
+                          scope="col"
+                          className="px-5 py-3 text-right font-semibold"
+                        >
+                          Keeper tenure
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y">
+                      {teamHistory.map((pick) => {
+                        const streak = getKeeperStreak(pick, history);
+
+                        return (
+                          <tr key={pick._id}>
+                            <td className="px-5 py-3 font-medium">
+                              {pick.year}
+                            </td>
+                            <td className="px-3 py-3 font-semibold">
+                              {pick.player.playerName}
+                            </td>
+                            <td className="px-3 py-3">
+                              {formatRound(pick.round)}
+                            </td>
+                            <td className="px-5 py-3">
+                              <KeeperTenureStatus
+                                season={pick.year}
+                                streak={streak}
+                                compact
+                              />
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </section>
-
-      {issues.length > 0 && (
-        <aside className="mt-10 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-sm leading-6 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="size-5" aria-hidden="true" />
-            <h2 className="font-semibold">Records needing review</h2>
-          </div>
-          <ul className="mt-2 list-disc space-y-1 pl-5">
-            {issues.map((issue, index) => (
-              <li key={`${issue.code}-${index}`}>{issue.message}</li>
-            ))}
-          </ul>
-        </aside>
-      )}
 
       <aside className="mt-10 rounded-2xl border bg-muted/40 p-5 text-sm leading-6 text-muted-foreground">
         Tenure is inferred from consecutive keeper seasons for the same player

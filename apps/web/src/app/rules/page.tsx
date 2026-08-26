@@ -119,7 +119,7 @@ function MessageSnapshot({
         “{quote}”
       </blockquote>
       <p className="mt-2 text-xs font-medium text-muted-foreground">
-        — {speaker} · Facebook league thread
+        — {speaker}
       </p>
       <p className="mt-4 border-t pt-4 text-sm leading-6">
         <strong>Documented rule:</strong> {conclusion}
@@ -178,17 +178,10 @@ export default function RulesPage() {
               <CircleDollarSign className="size-5" aria-hidden="true" />
             </span>
             <div>
-              <p className="text-sm text-muted-foreground">
-                Last confirmed annual buy-in
-              </p>
+              <p className="text-sm text-muted-foreground">Current buy-in</p>
               <h2 className="text-3xl font-bold">$100</h2>
             </div>
           </div>
-          <p className="mt-5 text-sm leading-6 text-muted-foreground">
-            A 2026 increase was put to a poll, but the exported thread contains
-            no final commissioner ruling. If payment is a concern, message
-            Scott, Ben, or Chris privately; arrangements can be made.
-          </p>
         </div>
       </section>
 
@@ -333,9 +326,8 @@ export default function RulesPage() {
           </h2>
         </div>
         <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
-          These snapshots preserve the relevant commissioner language from the
-          Facebook export. They document how the written rules have been
-          interpreted without publishing unrelated private conversation.
+          These snapshots document the relevant commissioner language on how the
+          written rules have been interpreted over the years.
         </p>
         <div className="mt-7 grid gap-5 lg:grid-cols-2">
           {messageSnapshots.map((snapshot) => (
@@ -346,30 +338,6 @@ export default function RulesPage() {
           ))}
         </div>
       </section>
-
-      <aside className="mt-10 rounded-2xl border border-amber-300 bg-amber-50 p-5 text-amber-950 dark:border-amber-900 dark:bg-amber-950/30 dark:text-amber-100">
-        <h2 className="font-semibold">Open commissioner decisions</h2>
-        <ul className="mt-2 list-disc space-y-1 pl-5 text-sm leading-6">
-          <li>Record the final 2026 buy-in after the poll closes.</li>
-          <li>
-            Set the exact regular-season trade deadline, including draft-pick
-            trades.
-          </li>
-          <li>
-            Decide whether a team-manager change affects the player&apos;s
-            keeper clock; Josh Allen is recorded in 2023, 2024, and 2025.
-          </li>
-          <li>
-            Codify whether postseason add/drop activity is allowed for keeper
-            purposes; a December 2025 transaction was reset, but no standing
-            rule was recorded.
-          </li>
-          <li>
-            Record the FantasyPros snapshot date, ADP-to-round mapping, and
-            Round 1 collision procedure.
-          </li>
-        </ul>
-      </aside>
     </main>
   );
 }
