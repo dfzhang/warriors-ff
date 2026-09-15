@@ -1,7 +1,16 @@
-import { PageBuilder } from "@/components/pagebuilder";
 import { sanityFetch } from "@/lib/sanity/live";
-import { queryHomePageData } from "@/lib/sanity/query";
+import {
+  queryAllTimeTeamRecords,
+  queryHomePageData,
+  queryLeagueChampions,
+} from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
+
+import {
+  HomePageContent,
+  type ChampionRecord,
+  type TeamRecord,
+} from "@/components/home-page-content";
 
 async function fetchHomePageData(stega = true) {
   return await sanityFetch({
@@ -22,18 +31,25 @@ export async function generateMetadata() {
           contentId: homePageData?._id,
           contentType: homePageData?._type,
         }
-      : {},
+      : {
+          title: "Warriors Fantasy Football",
+          description:
+            "All-time standings, reigning champion, and Hall of Champions for the Warriors fantasy football league.",
+          slug: "/",
+        },
   );
 }
 
 export default async function Page() {
-  const { data: homePageData } = await fetchHomePageData();
+  const [{ data: champions }, { data: teams }] = await Promise.all([
+    sanityFetch({ query: queryLeagueChampions }),
+    sanityFetch({ query: queryAllTimeTeamRecords }),
+  ]);
 
-  if (!homePageData) {
-    return <div>No home page data</div>;
-  }
-
-  const { _id, _type, pageBuilder } = homePageData ?? {};
-
-  return <PageBuilder pageBuilder={pageBuilder ?? []} id={_id} type={_type} />;
+  return (
+    <HomePageContent
+      champions={(champions ?? []) as ChampionRecord[]}
+      teams={(teams ?? []) as TeamRecord[]}
+    />
+  );
 }

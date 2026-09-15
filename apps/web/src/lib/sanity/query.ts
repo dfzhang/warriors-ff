@@ -369,6 +369,33 @@ export const queryAllTeams = defineQuery(`
   }
 `);
 
+export const queryLeagueChampions = defineQuery(`
+  *[_type == "teamSeason" && champion == true && defined(season->year) && defined(team)] | order(season->year desc){
+    _id,
+    teamNameThisYear,
+    "year": season->year,
+    team->{
+      _id,
+      teamId,
+      teamName,
+      teamAbbrev
+    }
+  }
+`);
+
+export const queryAllTimeTeamRecords = defineQuery(`
+  *[_type == "team"] | order(teamId asc){
+    _id,
+    teamId,
+    teamName,
+    teamAbbrev,
+    "wins": math::sum(*[_type == "teamSeason" && team._ref == ^._id].wins),
+    "losses": math::sum(*[_type == "teamSeason" && team._ref == ^._id].losses),
+    "ties": math::sum(*[_type == "teamSeason" && team._ref == ^._id].ties),
+    "pointsFor": math::sum(*[_type == "teamSeason" && team._ref == ^._id].pointsFor)
+  }
+`);
+
 // Query to fetch draft picks for a specific season
 export const queryDraftPicksByYear = defineQuery(`
   *[_type == "draftPick" && season->year == $year && defined(player)] | order(round asc, roundPick asc){
