@@ -121,8 +121,8 @@ export function HomePageContent({
           </h2>
         </div>
         <p className="mt-3 max-w-3xl leading-7 text-muted-foreground">
-          Combined regular-season and playoff records across every season,
-          including the current year.
+          Regular-season records across every season, including the current
+          year. Playoff and consolation games are not included.
         </p>
 
         <article className="mt-7 overflow-hidden rounded-2xl border bg-card shadow-sm">
