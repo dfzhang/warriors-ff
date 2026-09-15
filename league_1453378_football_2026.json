@@ -1,0 +1,3728 @@
+{
+  "league_id": 1453378,
+  "sport": "football",
+  "fetched_at": "2026-09-15T13:27:11.973171+00:00",
+  "years": [
+    {
+      "year": 2026,
+      "league_id": 1453378,
+      "sport": "football",
+      "current_week": 2,
+      "final_scoring_period": 17,
+      "settings": {
+        "name": "Warriors",
+        "scoring_type": "H2H_POINTS",
+        "num_teams": 10
+      },
+      "teams": [
+        {
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "team_abbrev": "ASKI",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 0,
+          "losses": 1,
+          "ties": 0,
+          "points_for": 133.9,
+          "points_against": 134.75,
+          "standing": 8,
+          "final_standing": 0,
+          "waiver_rank": 3,
+          "acquisitions": 0,
+          "drops": 2,
+          "trades": 0,
+          "scores": [
+            133.9
+          ],
+          "outcomes": [
+            "L"
+          ],
+          "schedule_opponent_ids": [
+            7,
+            10,
+            4,
+            3,
+            5,
+            9,
+            8,
+            2,
+            6,
+            7,
+            10,
+            4,
+            3
+          ],
+          "roster": [
+            {
+              "player_id": 4362238,
+              "player_name": "Chase Brown",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4567048,
+              "player_name": "Kenneth Walker III",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4258173,
+              "player_name": "Nico Collins",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4047646,
+              "player_name": "A.J. Brown",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4038941,
+              "player_name": "Justin Herbert",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685702,
+              "player_name": "Quinshon Judkins",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4360310,
+              "player_name": "Trevor Lawrence",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685512,
+              "player_name": "Jadarian Price",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4248528,
+              "player_name": "Christian Watson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4360078,
+              "player_name": "Alec Pierce",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3040151,
+              "player_name": "George Kittle",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16034,
+              "player_name": "Texans D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4568490,
+              "player_name": "RJ Harvey",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 17372,
+              "player_name": "Chris Boswell",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4429025,
+              "player_name": "Quentin Johnston",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{1E836EAF-5BDB-42AF-B07E-F1EEF3F9B0F3}",
+              "display_name": "Ben.win"
+            },
+            {
+              "id": "{A1D28BFA-2E39-4F35-9CF3-D270206EFBE0}",
+              "display_name": "ben.winayyy"
+            }
+          ]
+        },
+        {
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "team_abbrev": "ML",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 1,
+          "losses": 0,
+          "ties": 0,
+          "points_for": 126.75,
+          "points_against": 98.95,
+          "standing": 5,
+          "final_standing": 0,
+          "waiver_rank": 6,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            126.75
+          ],
+          "outcomes": [
+            "W"
+          ],
+          "schedule_opponent_ids": [
+            9,
+            6,
+            7,
+            10,
+            4,
+            3,
+            5,
+            1,
+            8,
+            9,
+            6,
+            7,
+            10
+          ],
+          "roster": [
+            {
+              "player_id": 3918298,
+              "player_name": "Josh Allen",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4870808,
+              "player_name": "Jeremiyah Love",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685382,
+              "player_name": "Omarion Hampton",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685472,
+              "player_name": "Tetairoa McMillan",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4723086,
+              "player_name": "Colston Loveland",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361370,
+              "player_name": "Chris Olave",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 12483,
+              "player_name": "Matthew Stafford",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432710,
+              "player_name": "TreVeyon Henderson",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4569173,
+              "player_name": "Rhamondre Stevenson",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3128429,
+              "player_name": "Courtland Sutton",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4242512,
+              "player_name": "Malik Willis",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4360761,
+              "player_name": "Michael Wilson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 2473037,
+              "player_name": "Jason Myers",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16021,
+              "player_name": "Eagles D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4683062,
+              "player_name": "Xavier Worthy",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{88C63A57-186C-41D9-863A-57186C81D9D1}",
+              "display_name": "gwanzo93"
+            }
+          ]
+        },
+        {
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "team_abbrev": "DALE",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 0,
+          "losses": 1,
+          "ties": 0,
+          "points_for": 147.85,
+          "points_against": 185.5,
+          "standing": 7,
+          "final_standing": 0,
+          "waiver_rank": 4,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            147.85
+          ],
+          "outcomes": [
+            "L"
+          ],
+          "schedule_opponent_ids": [
+            4,
+            9,
+            5,
+            1,
+            8,
+            2,
+            6,
+            7,
+            10,
+            4,
+            9,
+            5,
+            1
+          ],
+          "roster": [
+            {
+              "player_id": 4430807,
+              "player_name": "Bijan Robinson",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4242335,
+              "player_name": "Jonathan Taylor",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361307,
+              "player_name": "Trey McBride",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426354,
+              "player_name": "George Pickens",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 16800,
+              "player_name": "Davante Adams",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685278,
+              "player_name": "Luther Burden III",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4689114,
+              "player_name": "Jaxson Dart",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4871023,
+              "player_name": "Carnell Tate",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3915416,
+              "player_name": "DJ Moore",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4241416,
+              "player_name": "Chuba Hubbard",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3912547,
+              "player_name": "Sam Darnold",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4710714,
+              "player_name": "De'Zhaun Stribling",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685720,
+              "player_name": "Bryce Young",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4686361,
+              "player_name": "Cam Little",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16030,
+              "player_name": "Jaguars D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{590DE9E0-AEC7-4DA6-8F2D-B6F7E9EE7345}",
+              "display_name": "dzhang182"
+            }
+          ]
+        },
+        {
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "team_abbrev": "HRTS",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 1,
+          "losses": 0,
+          "ties": 0,
+          "points_for": 185.5,
+          "points_against": 147.85,
+          "standing": 1,
+          "final_standing": 0,
+          "waiver_rank": 10,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            185.5
+          ],
+          "outcomes": [
+            "W"
+          ],
+          "schedule_opponent_ids": [
+            3,
+            5,
+            1,
+            8,
+            2,
+            6,
+            7,
+            10,
+            9,
+            3,
+            5,
+            1,
+            8
+          ],
+          "roster": [
+            {
+              "player_id": 3916387,
+              "player_name": "Lamar Jackson",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4890973,
+              "player_name": "Ashton Jeanty",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3139477,
+              "player_name": "Patrick Mahomes",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361579,
+              "player_name": "Javonte Williams",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4569618,
+              "player_name": "Garrett Wilson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4431459,
+              "player_name": "Tyler Warren",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4429615,
+              "player_name": "Zay Flowers",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4032473,
+              "player_name": "Rashid Shaheed",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4569603,
+              "player_name": "Malik Washington",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4569987,
+              "player_name": "Jaylen Warren",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4429096,
+              "player_name": "Blake Corum",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16026,
+              "player_name": "Seahawks D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 8439,
+              "player_name": "Aaron Rodgers",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3126486,
+              "player_name": "Deebo Samuel Sr.",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4574716,
+              "player_name": "Harrison Mevis",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{C0444298-623A-431B-B17D-350B662D8831}",
+              "display_name": "christ3717922"
+            }
+          ]
+        },
+        {
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "team_abbrev": "RIDD",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 1,
+          "losses": 0,
+          "ties": 0,
+          "points_for": 182.1,
+          "points_against": 115.7,
+          "standing": 2,
+          "final_standing": 0,
+          "waiver_rank": 9,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            182.1
+          ],
+          "outcomes": [
+            "W"
+          ],
+          "schedule_opponent_ids": [
+            10,
+            4,
+            3,
+            9,
+            1,
+            8,
+            2,
+            6,
+            7,
+            10,
+            4,
+            3,
+            9
+          ],
+          "roster": [
+            {
+              "player_id": 4362628,
+              "player_name": "Ja'Marr Chase",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3915511,
+              "player_name": "Joe Burrow",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4262921,
+              "player_name": "Justin Jefferson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4427366,
+              "player_name": "Breece Hall",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4360689,
+              "player_name": "Tyler Shough",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4259545,
+              "player_name": "D'Andre Swift",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4596448,
+              "player_name": "Bucky Irving",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426388,
+              "player_name": "Jameson Williams",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4430027,
+              "player_name": "Sam LaPorta",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3953687,
+              "player_name": "Brandon Aubrey",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4688380,
+              "player_name": "Cam Ward",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4371733,
+              "player_name": "Kenny Gainwell",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16023,
+              "player_name": "Steelers D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4870795,
+              "player_name": "Makai Lemon",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4880281,
+              "player_name": "Jordyn Tyson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361529,
+              "player_name": "Isiah Pacheco",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{07C38F86-F137-48A5-BB8A-420957F740A6}",
+              "display_name": "g_g_gg_gg"
+            }
+          ]
+        },
+        {
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "team_abbrev": "TMNT",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 1,
+          "losses": 0,
+          "ties": 0,
+          "points_for": 160.45,
+          "points_against": 153.15,
+          "standing": 3,
+          "final_standing": 0,
+          "waiver_rank": 8,
+          "acquisitions": 0,
+          "drops": 1,
+          "trades": 0,
+          "scores": [
+            160.45
+          ],
+          "outcomes": [
+            "W"
+          ],
+          "schedule_opponent_ids": [
+            8,
+            2,
+            9,
+            7,
+            10,
+            4,
+            3,
+            5,
+            1,
+            8,
+            2,
+            9,
+            7
+          ],
+          "roster": [
+            {
+              "player_id": 3929630,
+              "player_name": "Saquon Barkley",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3043078,
+              "player_name": "Derrick Henry",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4430878,
+              "player_name": "Jaxon Smith-Njigba",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426338,
+              "player_name": "Bo Nix",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4036378,
+              "player_name": "Jordan Love",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4612826,
+              "player_name": "Ladd McConkey",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4567750,
+              "player_name": "Emeka Egbuka",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4047365,
+              "player_name": "Josh Jacobs",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432577,
+              "player_name": "C.J. Stroud",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4837248,
+              "player_name": "Fernando Mendoza",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3121023,
+              "player_name": "Dallas Goedert",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3916148,
+              "player_name": "Tony Pollard",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 2971573,
+              "player_name": "Ka'imi Fairbairn",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4912218,
+              "player_name": "Cyrus Allen",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16008,
+              "player_name": "Lions D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4597500,
+              "player_name": "Adonai Mitchell",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{F61071B3-F3C2-4F2F-9DD5-917580665A35}",
+              "display_name": "Zak 10"
+            }
+          ]
+        },
+        {
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "team_abbrev": "ZACK",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 1,
+          "losses": 0,
+          "ties": 0,
+          "points_for": 134.75,
+          "points_against": 133.9,
+          "standing": 4,
+          "final_standing": 0,
+          "waiver_rank": 7,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            134.75
+          ],
+          "outcomes": [
+            "W"
+          ],
+          "schedule_opponent_ids": [
+            1,
+            8,
+            2,
+            6,
+            9,
+            10,
+            4,
+            3,
+            5,
+            1,
+            8,
+            2,
+            6
+          ],
+          "roster": [
+            {
+              "player_id": 4374302,
+              "player_name": "Amon-Ra St. Brown",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4429160,
+              "player_name": "De'Von Achane",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426502,
+              "player_name": "Drake London",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4241478,
+              "player_name": "DeVonta Smith",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3046779,
+              "player_name": "Jared Goff",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4431611,
+              "player_name": "Caleb Williams",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4696981,
+              "player_name": "Cam Skattebo",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4572680,
+              "player_name": "Tucker Kraft",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4429023,
+              "player_name": "MarShawn Lloyd",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 16737,
+              "player_name": "Mike Evans",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4035687,
+              "player_name": "Michael Pittman Jr.",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16007,
+              "player_name": "Broncos D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4569587,
+              "player_name": "Wan'Dale Robinson",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3055899,
+              "player_name": "Harrison Butker",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4682648,
+              "player_name": "Malachi Fields",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{EA9AC238-3543-4B21-A7F2-8C22389CE85D}",
+              "display_name": "LeftyPhenom24"
+            }
+          ]
+        },
+        {
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "team_abbrev": "PURD",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 0,
+          "losses": 1,
+          "ties": 0,
+          "points_for": 153.15,
+          "points_against": 160.45,
+          "standing": 6,
+          "final_standing": 0,
+          "waiver_rank": 5,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            153.15
+          ],
+          "outcomes": [
+            "L"
+          ],
+          "schedule_opponent_ids": [
+            6,
+            7,
+            10,
+            4,
+            3,
+            5,
+            1,
+            9,
+            2,
+            6,
+            7,
+            10,
+            4
+          ],
+          "roster": [
+            {
+              "player_id": 3117251,
+              "player_name": "Christian McCaffrey",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4241389,
+              "player_name": "CeeDee Lamb",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 2577417,
+              "player_name": "Dak Prescott",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361741,
+              "player_name": "Brock Purdy",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4239993,
+              "player_name": "Tee Higgins",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432620,
+              "player_name": "Parker Washington",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4035538,
+              "player_name": "David Montgomery",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4678008,
+              "player_name": "Jonathon Brooks",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4361050,
+              "player_name": "Isaiah Likely",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4038815,
+              "player_name": "Rico Dowdle",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3917792,
+              "player_name": "Daniel Jones",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4870653,
+              "player_name": "KC Concepcion",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3116165,
+              "player_name": "Chris Godwin Jr.",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16017,
+              "player_name": "Patriots D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4362081,
+              "player_name": "Cameron Dicker",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{C86738F2-CCBE-49D2-8F1B-E0A7562F1E11}",
+              "display_name": "Snickle"
+            }
+          ]
+        },
+        {
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "team_abbrev": "NTG",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 0,
+          "losses": 1,
+          "ties": 0,
+          "points_for": 98.95,
+          "points_against": 126.75,
+          "standing": 10,
+          "final_standing": 0,
+          "waiver_rank": 1,
+          "acquisitions": 0,
+          "drops": 0,
+          "trades": 0,
+          "scores": [
+            98.95
+          ],
+          "outcomes": [
+            "L"
+          ],
+          "schedule_opponent_ids": [
+            2,
+            3,
+            6,
+            5,
+            7,
+            1,
+            10,
+            8,
+            4,
+            2,
+            3,
+            6,
+            5
+          ],
+          "roster": [
+            {
+              "player_id": 4426348,
+              "player_name": "Jayden Daniels",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4040715,
+              "player_name": "Jalen Hurts",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4379399,
+              "player_name": "James Cook III",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4595348,
+              "player_name": "Malik Nabers",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4239996,
+              "player_name": "Travis Etienne Jr.",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3121422,
+              "player_name": "Terry McLaurin",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4372016,
+              "player_name": "Jaylen Waddle",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4360248,
+              "player_name": "Kyle Pitts Sr.",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3917315,
+              "player_name": "Kyler Murray",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 5083076,
+              "player_name": "Harold Fannin Jr.",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4047650,
+              "player_name": "DK Metcalf",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4685415,
+              "player_name": "Travis Hunter",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4701936,
+              "player_name": "Matthew Golden",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16033,
+              "player_name": "Ravens D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4034949,
+              "player_name": "Eddy Pineiro",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{65EE23AC-C19C-4996-AE23-ACC19CB99620}",
+              "display_name": "rklink21"
+            },
+            {
+              "id": "{7C5B4DC1-E653-4338-8097-85418ADD4945}",
+              "display_name": "espn33904477"
+            }
+          ]
+        },
+        {
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "team_abbrev": "WARS",
+          "division_id": 0,
+          "division_name": "Warriors",
+          "wins": 0,
+          "losses": 1,
+          "ties": 0,
+          "points_for": 115.7,
+          "points_against": 182.1,
+          "standing": 9,
+          "final_standing": 0,
+          "waiver_rank": 2,
+          "acquisitions": 0,
+          "drops": 1,
+          "trades": 0,
+          "scores": [
+            115.7
+          ],
+          "outcomes": [
+            "L"
+          ],
+          "schedule_opponent_ids": [
+            5,
+            1,
+            8,
+            2,
+            6,
+            7,
+            9,
+            4,
+            3,
+            5,
+            1,
+            8,
+            2
+          ],
+          "roster": [
+            {
+              "player_id": 4429795,
+              "player_name": "Jahmyr Gibbs",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426515,
+              "player_name": "Puka Nacua",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432665,
+              "player_name": "Brock Bowers",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4428331,
+              "player_name": "Rashee Rice",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4430737,
+              "player_name": "Kyren Williams",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4431299,
+              "player_name": "Rome Odunze",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4431452,
+              "player_name": "Drake Maye",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4882093,
+              "player_name": "Bhayshul Tuten",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3052587,
+              "player_name": "Baker Mayfield",
+              "position": "QB",
+              "eligible_positions": [
+                "QB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432708,
+              "player_name": "Marvin Harrison Jr.",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4432773,
+              "player_name": "Brian Thomas Jr.",
+              "position": "WR",
+              "eligible_positions": [
+                "WR",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4241985,
+              "player_name": "J.K. Dobbins",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": -16014,
+              "player_name": "Rams D/ST",
+              "position": "D/ST",
+              "eligible_positions": [
+                "D/ST",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 3116365,
+              "player_name": "Mark Andrews",
+              "position": "TE",
+              "eligible_positions": [
+                "TE",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4426385,
+              "player_name": "Zach Charbonnet",
+              "position": "RB",
+              "eligible_positions": [
+                "RB",
+                "BE",
+                "IR"
+              ]
+            },
+            {
+              "player_id": 4567104,
+              "player_name": "Will Reichard",
+              "position": "K",
+              "eligible_positions": [
+                "K",
+                "BE",
+                "IR"
+              ]
+            }
+          ],
+          "owners": [
+            {
+              "id": "{BADD5613-EED0-44D5-933B-CB55F28427EC}",
+              "display_name": "andreww1155"
+            }
+          ]
+        }
+      ],
+      "matchups": [
+        {
+          "matchup_period_id": 1,
+          "home_team_id": 2,
+          "away_team_id": 9,
+          "home_score": 126.75,
+          "away_score": 98.95,
+          "winner": "home",
+          "is_playoff": false
+        },
+        {
+          "matchup_period_id": 1,
+          "home_team_id": 4,
+          "away_team_id": 3,
+          "home_score": 185.5,
+          "away_score": 147.85,
+          "winner": "home",
+          "is_playoff": false
+        },
+        {
+          "matchup_period_id": 1,
+          "home_team_id": 8,
+          "away_team_id": 6,
+          "home_score": 153.15,
+          "away_score": 160.45,
+          "winner": "away",
+          "is_playoff": false
+        },
+        {
+          "matchup_period_id": 1,
+          "home_team_id": 10,
+          "away_team_id": 5,
+          "home_score": 115.7,
+          "away_score": 182.1,
+          "winner": "away",
+          "is_playoff": false
+        },
+        {
+          "matchup_period_id": 1,
+          "home_team_id": 1,
+          "away_team_id": 7,
+          "home_score": 133.9,
+          "away_score": 134.75,
+          "winner": "away",
+          "is_playoff": false
+        }
+      ],
+      "draft": [
+        {
+          "round": 1,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4430807,
+          "player_name": "Bijan Robinson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 1,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 3117251,
+          "player_name": "Christian McCaffrey",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 1,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 3918298,
+          "player_name": "Josh Allen",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 1,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 3916387,
+          "player_name": "Lamar Jackson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 1,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4374302,
+          "player_name": "Amon-Ra St. Brown",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 1,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4426348,
+          "player_name": "Jayden Daniels",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 1,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4362628,
+          "player_name": "Ja'Marr Chase",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "WR"
+        },
+        {
+          "round": 1,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4429795,
+          "player_name": "Jahmyr Gibbs",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "RB"
+        },
+        {
+          "round": 1,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4362238,
+          "player_name": "Chase Brown",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 1,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 3929630,
+          "player_name": "Saquon Barkley",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 3043078,
+          "player_name": "Derrick Henry",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4567048,
+          "player_name": "Kenneth Walker III",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4426515,
+          "player_name": "Puka Nacua",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 2,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 3915511,
+          "player_name": "Joe Burrow",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 2,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4040715,
+          "player_name": "Jalen Hurts",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 2,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4429160,
+          "player_name": "De'Von Achane",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4890973,
+          "player_name": "Ashton Jeanty",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4870808,
+          "player_name": "Jeremiyah Love",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 2,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4241389,
+          "player_name": "CeeDee Lamb",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 2,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4242335,
+          "player_name": "Jonathan Taylor",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "RB"
+        },
+        {
+          "round": 3,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4361307,
+          "player_name": "Trey McBride",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 3,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 2577417,
+          "player_name": "Dak Prescott",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 3,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4685382,
+          "player_name": "Omarion Hampton",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 3,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 3139477,
+          "player_name": "Patrick Mahomes",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 3,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4426502,
+          "player_name": "Drake London",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 3,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4379399,
+          "player_name": "James Cook III",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "RB"
+        },
+        {
+          "round": 3,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4262921,
+          "player_name": "Justin Jefferson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 3,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4432665,
+          "player_name": "Brock Bowers",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 3,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4258173,
+          "player_name": "Nico Collins",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 3,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4430878,
+          "player_name": "Jaxon Smith-Njigba",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4426338,
+          "player_name": "Bo Nix",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 4,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4047646,
+          "player_name": "A.J. Brown",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4428331,
+          "player_name": "Rashee Rice",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4427366,
+          "player_name": "Breece Hall",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 4,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4595348,
+          "player_name": "Malik Nabers",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4241478,
+          "player_name": "DeVonta Smith",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4361579,
+          "player_name": "Javonte Williams",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 4,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4685472,
+          "player_name": "Tetairoa McMillan",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 4,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4361741,
+          "player_name": "Brock Purdy",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 4,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4426354,
+          "player_name": "George Pickens",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 5,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 16800,
+          "player_name": "Davante Adams",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 5,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4239993,
+          "player_name": "Tee Higgins",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 5,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4723086,
+          "player_name": "Colston Loveland",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 5,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4569618,
+          "player_name": "Garrett Wilson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 5,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 3046779,
+          "player_name": "Jared Goff",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 5,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4239996,
+          "player_name": "Travis Etienne Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 5,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4360689,
+          "player_name": "Tyler Shough",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 5,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4430737,
+          "player_name": "Kyren Williams",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 5,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4038941,
+          "player_name": "Justin Herbert",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 5,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4036378,
+          "player_name": "Jordan Love",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 6,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4612826,
+          "player_name": "Ladd McConkey",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 6,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4685702,
+          "player_name": "Quinshon Judkins",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 6,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4431299,
+          "player_name": "Rome Odunze",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 6,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4259545,
+          "player_name": "D'Andre Swift",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 6,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 3121422,
+          "player_name": "Terry McLaurin",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 6,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4431611,
+          "player_name": "Caleb Williams",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 6,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4431459,
+          "player_name": "Tyler Warren",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 6,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4361370,
+          "player_name": "Chris Olave",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "WR"
+        },
+        {
+          "round": 6,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4432620,
+          "player_name": "Parker Washington",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 6,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4685278,
+          "player_name": "Luther Burden III",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 7,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4689114,
+          "player_name": "Jaxson Dart",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 7,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4035538,
+          "player_name": "David Montgomery",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 7,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 12483,
+          "player_name": "Matthew Stafford",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 7,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4429615,
+          "player_name": "Zay Flowers",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "WR"
+        },
+        {
+          "round": 7,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4696981,
+          "player_name": "Cam Skattebo",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "RB"
+        },
+        {
+          "round": 7,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4372016,
+          "player_name": "Jaylen Waddle",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 7,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4596448,
+          "player_name": "Bucky Irving",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "RB"
+        },
+        {
+          "round": 7,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4431452,
+          "player_name": "Drake Maye",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 7,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4360310,
+          "player_name": "Trevor Lawrence",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "QB"
+        },
+        {
+          "round": 7,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4567750,
+          "player_name": "Emeka Egbuka",
+          "bid_amount": 0,
+          "keeper": true,
+          "position": "WR"
+        },
+        {
+          "round": 8,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4047365,
+          "player_name": "Josh Jacobs",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 8,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4685512,
+          "player_name": "Jadarian Price",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 8,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4882093,
+          "player_name": "Bhayshul Tuten",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 8,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4426388,
+          "player_name": "Jameson Williams",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 8,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4360248,
+          "player_name": "Kyle Pitts Sr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 8,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4572680,
+          "player_name": "Tucker Kraft",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 8,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4032473,
+          "player_name": "Rashid Shaheed",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 8,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4432710,
+          "player_name": "TreVeyon Henderson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 8,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4678008,
+          "player_name": "Jonathon Brooks",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 8,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4871023,
+          "player_name": "Carnell Tate",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 9,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 3915416,
+          "player_name": "DJ Moore",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 9,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4361050,
+          "player_name": "Isaiah Likely",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 9,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4569173,
+          "player_name": "Rhamondre Stevenson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 9,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4569603,
+          "player_name": "Malik Washington",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 9,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4429023,
+          "player_name": "MarShawn Lloyd",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 9,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 3917315,
+          "player_name": "Kyler Murray",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 9,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4430027,
+          "player_name": "Sam LaPorta",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 9,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 3052587,
+          "player_name": "Baker Mayfield",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 9,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4248528,
+          "player_name": "Christian Watson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 9,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4432577,
+          "player_name": "C.J. Stroud",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 10,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4837248,
+          "player_name": "Fernando Mendoza",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 10,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4360078,
+          "player_name": "Alec Pierce",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 10,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4432708,
+          "player_name": "Marvin Harrison Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 10,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 3953687,
+          "player_name": "Brandon Aubrey",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 10,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 5083076,
+          "player_name": "Harold Fannin Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 10,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 16737,
+          "player_name": "Mike Evans",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 10,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4569987,
+          "player_name": "Jaylen Warren",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 10,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 3128429,
+          "player_name": "Courtland Sutton",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 10,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4038815,
+          "player_name": "Rico Dowdle",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 10,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4241416,
+          "player_name": "Chuba Hubbard",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 11,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 3912547,
+          "player_name": "Sam Darnold",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 11,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 3917792,
+          "player_name": "Daniel Jones",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 11,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4242512,
+          "player_name": "Malik Willis",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 11,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4429096,
+          "player_name": "Blake Corum",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 11,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4035687,
+          "player_name": "Michael Pittman Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 11,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4047650,
+          "player_name": "DK Metcalf",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 11,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4688380,
+          "player_name": "Cam Ward",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 11,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4432773,
+          "player_name": "Brian Thomas Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 11,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 3040151,
+          "player_name": "George Kittle",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 11,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 3121023,
+          "player_name": "Dallas Goedert",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 12,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 3916148,
+          "player_name": "Tony Pollard",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 12,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": -16034,
+          "player_name": "Texans D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 12,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4241985,
+          "player_name": "J.K. Dobbins",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 12,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4371733,
+          "player_name": "Kenny Gainwell",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 12,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4685415,
+          "player_name": "Travis Hunter",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 12,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": -16007,
+          "player_name": "Broncos D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 12,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": -16026,
+          "player_name": "Seahawks D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 12,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4360761,
+          "player_name": "Michael Wilson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 12,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4870653,
+          "player_name": "KC Concepcion",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 12,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4710714,
+          "player_name": "De'Zhaun Stribling",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 13,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4685720,
+          "player_name": "Bryce Young",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 13,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 3116165,
+          "player_name": "Chris Godwin Jr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 13,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 2473037,
+          "player_name": "Jason Myers",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 13,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 8439,
+          "player_name": "Aaron Rodgers",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "QB"
+        },
+        {
+          "round": 13,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4569587,
+          "player_name": "Wan'Dale Robinson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 13,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4701936,
+          "player_name": "Matthew Golden",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 13,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": -16023,
+          "player_name": "Steelers D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 13,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": -16014,
+          "player_name": "Rams D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 13,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4568490,
+          "player_name": "RJ Harvey",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "RB"
+        },
+        {
+          "round": 13,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 2971573,
+          "player_name": "Ka'imi Fairbairn",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 14,
+          "round_pick": 1,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": 4912218,
+          "player_name": "Cyrus Allen",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 14,
+          "round_pick": 2,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 4429025,
+          "player_name": "Quentin Johnston",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 14,
+          "round_pick": 3,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 3116365,
+          "player_name": "Mark Andrews",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "TE"
+        },
+        {
+          "round": 14,
+          "round_pick": 4,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4870795,
+          "player_name": "Makai Lemon",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 14,
+          "round_pick": 5,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": -16033,
+          "player_name": "Ravens D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 14,
+          "round_pick": 6,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 3055899,
+          "player_name": "Harrison Butker",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 14,
+          "round_pick": 7,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 3126486,
+          "player_name": "Deebo Samuel Sr.",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 14,
+          "round_pick": 8,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": -16021,
+          "player_name": "Eagles D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 14,
+          "round_pick": 9,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": -16017,
+          "player_name": "Patriots D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 14,
+          "round_pick": 10,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": 4686361,
+          "player_name": "Cam Little",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 1,
+          "team_id": 3,
+          "team_name": "Mr Worldwide",
+          "player_id": -16030,
+          "player_name": "Jaguars D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        },
+        {
+          "round": 15,
+          "round_pick": 2,
+          "team_id": 8,
+          "team_name": "Purdy Likely",
+          "player_id": 4362081,
+          "player_name": "Cameron Dicker",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 3,
+          "team_id": 2,
+          "team_name": "McLoveland",
+          "player_id": 4683062,
+          "player_name": "Xavier Worthy",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 15,
+          "round_pick": 4,
+          "team_id": 4,
+          "team_name": "Lamar and the Mahomies",
+          "player_id": 4574716,
+          "player_name": "Harrison Mevis",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 5,
+          "team_id": 7,
+          "team_name": "Hootie and The Bo-Fish",
+          "player_id": 4682648,
+          "player_name": "Malachi Fields",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 15,
+          "round_pick": 6,
+          "team_id": 9,
+          "team_name": "The   Underdog",
+          "player_id": 4034949,
+          "player_name": "Eddy Pineiro",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 7,
+          "team_id": 5,
+          "team_name": "Hall in the Family",
+          "player_id": 4880281,
+          "player_name": "Jordyn Tyson",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "WR"
+        },
+        {
+          "round": 15,
+          "round_pick": 8,
+          "team_id": 10,
+          "team_name": "Roll Pards",
+          "player_id": 4689936,
+          "player_name": "Jake Bates",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 9,
+          "team_id": 1,
+          "team_name": "Herbert Fully Loaded",
+          "player_id": 17372,
+          "player_name": "Chris Boswell",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "K"
+        },
+        {
+          "round": 15,
+          "round_pick": 10,
+          "team_id": 6,
+          "team_name": "Teenage Mutant Njigba Turtles",
+          "player_id": -16008,
+          "player_name": "Lions D/ST",
+          "bid_amount": 0,
+          "keeper": false,
+          "position": "D/ST"
+        }
+      ]
+    }
+  ]
+}
