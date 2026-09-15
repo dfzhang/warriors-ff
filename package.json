@@ -10,6 +10,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
+    "@sanity/blueprints": "0.24.0",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",
     "prettier": "^3.6.2",
@@ -19,5 +20,9 @@
   "packageManager": "pnpm@10.14.0",
   "engines": {
     "node": ">=20"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.13.2",
+    "@sanity/functions": "^1.7.2"
   }
 }
