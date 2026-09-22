@@ -13,6 +13,10 @@ import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryTeamSeas
 import { getSEOMetadata } from "@/lib/seo";
 import { getTeamRouteSegment, sanitizeTeamRouteSegment } from "@/lib/team-route";
 
+// Team pages were fully static at build time, so Tuesday's ESPN sync never
+// appeared until a redeploy. ISR keeps weekly scores fresh without one.
+export const revalidate = 60;
+
 type TeamPathRecord = {
   abbrev: string | null;
   teamId: number;
@@ -123,14 +127,15 @@ export default async function TeamPage({
   const totalAveragePointsPerGame = totalGames > 0 ? totalPointsFor / totalGames : 0;
 
   // Fetch all matchups across all seasons for head-to-head records
-  const allMatchups = await client.fetch(queryAllTeamMatchups, {
-    teamRef: teamId,
+  const { data: allMatchups } = await sanityFetch({
+    query: queryAllTeamMatchups,
+    params: { teamRef: teamId },
   });
 
   // Calculate head-to-head records from matchups
   const headToHeadRecords = new Map<string, { wins: number; losses: number; ties: number; opponent: any }>();
 
-  for (const matchup of allMatchups) {
+  for (const matchup of allMatchups ?? []) {
     const isHome = matchup.homeTeam?._id === teamId;
     const opponent = isHome ? matchup.awayTeam : matchup.homeTeam;
     const teamScore = isHome ? matchup.homeScore : matchup.awayScore;
@@ -198,9 +203,12 @@ export default async function TeamPage({
   // Fetch matchups for each season separately
   const seasonsWithMatchups = await Promise.all(
     (seasons || []).map(async (season: any) => {
-      const matchups = await client.fetch(queryTeamSeasonMatchups, {
-        seasonId: season.seasonId,
-        teamRef: season.teamRef,
+      const { data: matchups } = await sanityFetch({
+        query: queryTeamSeasonMatchups,
+        params: {
+          seasonId: season.seasonId,
+          teamRef: season.teamRef,
+        },
       });
       
       // Deduplicate matchups - filter out duplicates and invalid weeks
@@ -224,9 +232,12 @@ export default async function TeamPage({
       // Fetch playoff matchups if team finished in top 4
       let playoffMatchups: any[] = [];
       if (isTop4) {
-        const playoffs = await client.fetch(queryTeamSeasonPlayoffMatchups, {
-          seasonId: season.seasonId,
-          teamRef: season.teamRef,
+        const { data: playoffs } = await sanityFetch({
+          query: queryTeamSeasonPlayoffMatchups,
+          params: {
+            seasonId: season.seasonId,
+            teamRef: season.teamRef,
+          },
         });
         
         // Deduplicate playoff matchups
