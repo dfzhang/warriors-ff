@@ -1,5 +1,5 @@
 import { HomePageContent, type ChampionRecord, type TeamRecord } from "@/components/home-page-content";
-import { PUBLISHED_REVALIDATE_SECONDS, sanityFetch } from "@/lib/sanity/live";
+import { sanityFetch } from "@/lib/sanity/live";
 import {
   queryAllTimeTeamRecords,
   queryHomePageData,
@@ -7,7 +7,9 @@ import {
 } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
 
-export const revalidate = PUBLISHED_REVALIDATE_SECONDS;
+// Must be a literal. Next.js rejects imported segment config values.
+// Keep this aligned with PUBLISHED_REVALIDATE_SECONDS in lib/sanity/live.ts.
+export const revalidate = 60;
 
 async function fetchHomePageData(stega = true) {
   return await sanityFetch({

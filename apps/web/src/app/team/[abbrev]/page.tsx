@@ -8,14 +8,15 @@ import {
 } from "@workspace/ui/components/accordion";
 
 import { client } from "@/lib/sanity/client";
-import { PUBLISHED_REVALIDATE_SECONDS, sanityFetch } from "@/lib/sanity/live";
+import { sanityFetch } from "@/lib/sanity/live";
 import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryTeamSeasonPlayoffMatchups, queryAllTeamMatchups } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
 import { getTeamRouteSegment, sanitizeTeamRouteSegment } from "@/lib/team-route";
 
-// Abbreviation routes are prerendered. Published fetches revalidate on the
-// same interval so /team/ASKI does not keep a separate frozen copy of /team/1.
-export const revalidate = PUBLISHED_REVALIDATE_SECONDS;
+// Must be a literal. Next.js rejects imported segment config values.
+// Abbreviation routes are prerendered; keep this aligned with
+// PUBLISHED_REVALIDATE_SECONDS so /team/ASKI refreshes with /team/1.
+export const revalidate = 60;
 
 type TeamPathRecord = {
   abbrev: string | null;
