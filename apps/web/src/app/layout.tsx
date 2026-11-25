@@ -1,7 +1,8 @@
 import "@workspace/ui/globals.css";
 
 import { Analytics } from "@vercel/analytics/next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity";
 import { Suspense } from "react";
@@ -15,20 +16,6 @@ import { SanityLive } from "@/lib/sanity/live";
 
 import { Providers } from "../components/providers";
 
-const fontGeist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
-  weight: ["400", "500", "600", "700"],
-  display: "optional",
-});
-
-const fontMono = Geist_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  weight: ["400", "700"],
-  display: "optional",
-});
-
 export default async function RootLayout({
   children,
 }: Readonly<{
@@ -39,7 +26,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${fontGeist.variable} ${fontMono.variable} font-geist antialiased`}
+        className={`${GeistSans.variable} ${GeistMono.variable} font-geist antialiased`}
       >
         <Providers>
           <Suspense fallback={<NavbarSkeleton />}>
