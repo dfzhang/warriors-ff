@@ -8,14 +8,14 @@ import {
 } from "@workspace/ui/components/accordion";
 
 import { client } from "@/lib/sanity/client";
-import { sanityFetch } from "@/lib/sanity/live";
+import { PUBLISHED_REVALIDATE_SECONDS, sanityFetch } from "@/lib/sanity/live";
 import { queryTeamBySlug, queryTeamPaths, queryTeamSeasonMatchups, queryTeamSeasonPlayoffMatchups, queryAllTeamMatchups } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
 import { getTeamRouteSegment, sanitizeTeamRouteSegment } from "@/lib/team-route";
 
-// Team pages were fully static at build time, so Tuesday's ESPN sync never
-// appeared until a redeploy. ISR keeps weekly scores fresh without one.
-export const revalidate = 60;
+// Abbreviation routes are prerendered. Published fetches revalidate on the
+// same interval so /team/ASKI does not keep a separate frozen copy of /team/1.
+export const revalidate = PUBLISHED_REVALIDATE_SECONDS;
 
 type TeamPathRecord = {
   abbrev: string | null;

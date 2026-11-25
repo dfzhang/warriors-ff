@@ -1,5 +1,5 @@
 import { HomePageContent, type ChampionRecord, type TeamRecord } from "@/components/home-page-content";
-import { sanityFetch } from "@/lib/sanity/live";
+import { PUBLISHED_REVALIDATE_SECONDS, sanityFetch } from "@/lib/sanity/live";
 import {
   queryAllTimeTeamRecords,
   queryHomePageData,
@@ -7,7 +7,7 @@ import {
 } from "@/lib/sanity/query";
 import { getSEOMetadata } from "@/lib/seo";
 
-export const revalidate = 60;
+export const revalidate = PUBLISHED_REVALIDATE_SECONDS;
 
 async function fetchHomePageData(stega = true) {
   return await sanityFetch({
